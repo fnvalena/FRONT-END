@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `galeria_propiedad` (
   `orden` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `id_propiedad` (`id_propiedad`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,39 @@ CREATE TABLE IF NOT EXISTS `propiedades` (
   `fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `idx_gestor_propiedad` (`id_gestor`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `propiedades`
+--
+
+INSERT INTO `propiedades` (`id`, `tipo`, `fecha_publicacion`, `provincia`, `comuna`, `sector`, `dormitorios`, `banos`, `area_total`, `area_construida`, `precio_clp`, `precio_uf`, `descripcion`, `visita`, `bodega`, `estacionamiento`, `logia`, `cocina_amoblada`, `antejardin`, `patio_trasero`, `piscina`, `id_gestor`, `estado_gestion`, `fecha_asignacion`, `fecha_creacion`) VALUES
+(1, 'Casa', '2026-05-30', 'Elqui', 'Coquimbo', 'Peñuelas', 5, 4, 300.00, 180.00, 560000000.00, 14358.00, 'Casa en venta en Peñuelas, Coquimbo. Propiedad amplia cercana a servicios, avenida principal y sector residencial consolidado.', 'si', 'si', 2, 1, 1, 1, 1, 0, NULL, 'sin_asignar', NULL, '2026-06-21 00:00:00'),
+(2, 'Casa', '2026-05-30', 'Elqui', 'La Serena', 'San Joaquín', 4, 3, 372.50, 140.00, 385640810.00, 9500.00, 'Casa en venta en San Joaquín, La Serena. Propiedad familiar con amplios espacios, estacionamientos y buena conectividad.', 'si', 'no', 2, 1, 1, 1, 1, 0, NULL, 'sin_asignar', NULL, '2026-06-21 00:00:00'),
+(3, 'Casa', '2026-05-30', 'Elqui', 'La Serena', 'Algarrobito', 9, 6, 5000.00, 650.00, 253020965.00, 6233.00, 'Casa en venta en Algarrobito, La Serena. Amplia propiedad con gran terreno, ideal para uso familiar o inversión.', 'si', 'si', 4, 1, 1, 1, 1, 0, NULL, 'sin_asignar', NULL, '2026-06-21 00:00:00'),
+(4, 'Casa', '2026-05-30', 'Elqui', 'La Serena', 'Serena Oriente', 3, 2, 252.32, 95.00, 223265732.00, 5500.00, 'Casa en venta en Serena Oriente, La Serena. Propiedad residencial con buena distribución y conectividad.', 'si', 'no', 2, 1, 1, 1, 1, 0, NULL, 'sin_asignar', NULL, '2026-06-21 00:00:00'),
+(5, 'Departamento', '2026-05-30', 'Elqui', 'La Serena', 'Av. Pacífico', 2, 2, 78.00, 78.00, 182671963.00, 4500.00, 'Departamento en venta en Avenida Pacífico, La Serena. Excelente ubicación cercana a la costa y servicios.', 'si', 'no', 1, 1, 1, 0, 0, 0, NULL, 'sin_asignar', NULL, '2026-06-21 00:00:00'),
+(6, 'Departamento', '2026-05-30', 'Elqui', 'La Serena', 'Laguna del Mar', 3, 2, 96.34, 96.34, 207028225.00, 5100.00, 'Departamento en venta en Laguna del Mar, La Serena. Propiedad ubicada en condominio con buena conectividad y servicios.', 'si', 'no', 1, 1, 1, 0, 0, 0, NULL, 'sin_asignar', NULL, '2026-06-21 00:00:00'),
+(7, 'Terreno', '2026-05-30', 'Limarí', 'Ovalle', 'Flor del Norte', 0, 0, 5000.00, 0.00, 811875400.00, 20000.00, 'Terreno en venta en sector Flor del Norte, Ovalle. Superficie amplia para desarrollo o inversión.', 'si', 'no', 0, 0, 0, 0, 0, 0, NULL, 'sin_asignar', NULL, '2026-06-21 00:00:00'),
+(8, 'Casa', '2026-05-30', 'Elqui', 'Coquimbo', 'Nova Hacienda', 3, 2, 144.00, 90.00, 138018818.00, 3400.00, 'Casa en venta en Nova Hacienda, Coquimbo. Vivienda familiar con estacionamiento y conectividad a servicios.', 'si', 'no', 1, 1, 1, 1, 1, 0, NULL, 'sin_asignar', NULL, '2026-06-21 00:00:00'),
+(9, 'Casa', '2026-05-30', 'Elqui', 'Coquimbo', 'San Juan', 3, 1, 180.00, 90.00, 78548944.00, 1935.00, 'Casa en venta en San Juan, Coquimbo. Propiedad residencial cercana a barrio consolidado.', 'si', 'no', 1, 0, 1, 1, 1, 0, NULL, 'sin_asignar', NULL, '2026-06-21 00:00:00'),
+(10, 'Terreno', '2026-05-30', 'Limarí', 'Ovalle', 'Mineral de Talca', 0, 0, 5000.00, 0.00, 7900000.00, 194.61, 'Terreno en venta en Mineral de Talca, Ovalle. Superficie disponible para proyecto rural o inversión.', 'si', 'no', 0, 0, 0, 0, 0, 0, NULL, 'sin_asignar', NULL, '2026-06-21 00:00:00');
+
+--
+-- Volcado de datos para la tabla `galeria_propiedad`
+--
+
+INSERT INTO `galeria_propiedad` (`id`, `id_propiedad`, `ruta_imagen`, `es_principal`, `orden`) VALUES
+(1, 1, 'img/Captura%20de%20pantalla%202026-05-30%20220818.png', 1, 0),
+(2, 2, 'img/Captura%20de%20pantalla%202026-05-30%20221540.png', 1, 0),
+(3, 3, 'img/Captura%20de%20pantalla%202026-05-30%20221921.png', 1, 0),
+(4, 4, 'img/propiedad4-01.png', 1, 0),
+(5, 5, 'img/propiedad5-01.png', 1, 0),
+(6, 6, 'img/propiedad6-01.png', 1, 0),
+(7, 7, 'img/propiedad7-01.png', 1, 0),
+(8, 8, 'img/propiedad8-01.png', 1, 0),
+(9, 9, 'img/propiedad9-01.png', 1, 0),
+(10, 10, 'img/propiedad10-01.png', 1, 0);
 
 -- --------------------------------------------------------
 
