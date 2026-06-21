@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Propiedad en Venta - PNK Inmobiliaria</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html"><span class="brand-mark">PNK</span><span>PNK Inmobiliaria</span></a>
+      <div class="contact-strip"><span>La Serena y Coquimbo</span><span>+56 9 4411 6374</span></div>
+    </div>
+    <div class="nav-wrap">
+      <nav class="main-nav" aria-label="Navegacion principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="registro-propietario.html">Registrarme</a>
+            <ul>
+              <li><a href="registro-propietario.html">Propietario</a></li>
+              <li><a href="registro-gestor.html">Gestor</a></li>
+            </ul>
+          </li>
+          <li><a href="login.html">Ingresar</a></li>
+          <li><a href="buscador-propiedad.html">Buscar</a></li>
+          <li><a href="publicar-propiedad.html">Publicar</a></li>
+          <li><a href="quienes-somos.html">Quienes Somos</a></li>
+          <li><a href="administracion.php">Dashboard</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+    <section class="page-hero">
+      <p class="eyebrow">Buscador</p>
+      <h1>Busca por provincia, comuna y sector</h1>
+      <p>Filtra inmuebles por ubicacion y tipo de propiedad dentro de la Region de Coquimbo.</p>
+    </section>
+  </header>
+
+  <main id="contenido">
+    <section class="section form-card">
+      <form id="formBusquedaAjax" action="buscar_propiedades.php" method="get">
+        <div class="form-grid">
+          <div>
+            <label for="operacion">Operacion</label>
+            <select id="operacion" name="operacion">
+              <option value="venta" selected>Venta</option>
+            </select>
+          </div>
+          <div>
+            <label for="tipo">Tipo de inmueble</label>
+            <select id="tipo" name="tipo">
+              <option value="">Todos</option>
+              <option>Casa</option>
+              <option>Departamento</option>
+              <option>Terreno</option>
+            </select>
+          </div>
+          <div>
+            <label for="provincia">Provincia</label>
+            <select id="provincia" name="provincia">
+              <option value="">Todas</option>
+              <option>Elqui</option>
+              <option>Limari</option>
+              <option>Choapa</option>
+            </select>
+          </div>
+          <div>
+            <label for="comuna">Comuna</label>
+            <select id="comuna" name="comuna">
+              <option value="">Todas</option>
+              <option>La Serena</option>
+              <option>Coquimbo</option>
+              <option>Vicuna</option>
+              <option>Ovalle</option>
+              <option>Monte Patria</option>
+              <option>Illapel</option>
+              <option>Los Vilos</option>
+              <option>Salamanca</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="sector">Sector</label>
+            <input type="text" id="sector" name="sector" placeholder="Ejemplo: San Joaquin">
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button type="submit">Buscar filtrado</button>
+          <a class="btn btn-outline" href="buscar-mapa.html">Buscar en mapa</a>
+          <a class="btn btn-outline" href="buscar-propiedad-codigo.html">Buscar por codigo</a>
+        </div>
+      </form>
+    </section>
+
+    <section class="section" id="resultados-filtro">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Filtro activo</p>
+          <h2>Resultados de busqueda</h2>
+        </div>
+        <p>Los resultados se cargan desde MySQL usando AJAX. Al seleccionar una propiedad se abre el formulario CRUD para editar sus datos.</p>
+      </div>
+
+      <div class="grid grid-2" id="resultados-ajax">
+        <article class="content-card">
+          <span class="badge">AJAX</span>
+          <h3>Usa el formulario para buscar</h3>
+          <p>Los resultados apareceran aqui con datos cargados desde MySQL.</p>
+        </article>
+      </div>
+
+      <div class="hero-actions" style="margin-top: 1.5rem;">
+        <a class="btn btn-outline" href="listado-propiedades.html">Ver todas las propiedades</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="copyright">&copy; 2026 PNK Inmobiliaria - Todos los derechos reservados</p>
+  </footer>
+  <script src="js/buscar-propiedades.js"></script>
+</body>
+</html>

@@ -1,0 +1,970 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --ink: #182320;
+  --muted: #63706c;
+  --brand: #0f4f47;
+  --brand-strong: #0a3732;
+  --accent: #c99a4a;
+  --accent-soft: #f4ead8;
+  --surface: #ffffff;
+  --surface-soft: #f6f8f5;
+  --line: #dbe3df;
+  --shadow: 0 18px 45px rgba(24, 35, 32, 0.12);
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--surface-soft);
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 10;
+  padding: .75rem 1rem;
+  color: #fff;
+  background: var(--brand);
+  border-radius: var(--radius);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.site-header {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(10, 55, 50, .96), rgba(15, 79, 71, .92)),
+    url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1800&q=80') center/cover;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: .75rem 1.25rem;
+  font-size: .92rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.brand-mark {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: var(--brand);
+  background: #fff;
+  border-radius: 50%;
+  font-weight: 800;
+}
+
+.contact-strip {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: rgba(255, 255, 255, .88);
+}
+
+.nav-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  margin: 0;
+  padding: .7rem 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.main-nav li {
+  position: relative;
+}
+
+.main-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: .58rem .8rem;
+  color: #fff;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+.main-nav a:hover,
+.main-nav a:focus-visible {
+  background: rgba(255, 255, 255, .14);
+  outline: none;
+}
+
+.main-nav ul ul {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  min-width: 210px;
+  z-index: 5;
+  padding: .45rem;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.main-nav li:hover > ul,
+.main-nav li:focus-within > ul {
+  display: grid;
+}
+
+.main-nav ul ul a {
+  width: 100%;
+  color: var(--ink);
+}
+
+.hero,
+.page-hero {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 6rem) 1.25rem;
+}
+
+
+.eyebrow {
+  margin: 0 0 .75rem;
+  color: var(--accent-soft);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: .82rem;
+  letter-spacing: .08em;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 .75rem;
+  line-height: 1.15;
+}
+
+h1 {
+  max-width: 760px;
+  font-size: clamp(2.25rem, 6vw, 4.6rem);
+}
+
+h2 {
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+.hero p,
+.page-hero p {
+  max-width: 680px;
+  margin: 0;
+  color: rgba(255, 255, 255, .88);
+  font-size: 1.08rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: .75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.search-panel,
+.content-card,
+.form-card,
+.property-card,
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(24, 35, 32, .07);
+}
+
+.search-panel {
+  padding: 1.25rem;
+  color: var(--ink);
+}
+
+.notice-banner {
+  display: grid;
+  gap: .5rem;
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  color: var(--brand-strong);
+  background: linear-gradient(135deg, rgba(244, 234, 216, .96), rgba(232, 240, 236, .98));
+  border: 1px solid rgba(201, 154, 74, .28);
+  border-radius: var(--radius);
+}
+
+.notice-banner strong {
+  font-size: 1.02rem;
+}
+
+.notice-banner p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.auth-grid,
+.role-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.role-card {
+  display: grid;
+  gap: .85rem;
+}
+
+.role-card .badge,
+.placeholder .badge {
+  width: fit-content;
+}
+
+.role-meta {
+  display: grid;
+  gap: .5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.role-meta li {
+  padding-left: 1rem;
+  color: var(--muted);
+  position: relative;
+}
+
+.role-meta li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .65rem;
+  width: .45rem;
+  height: .45rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.auth-card {
+  display: grid;
+  gap: .9rem;
+}
+
+.auth-credentials {
+  display: grid;
+  gap: .35rem;
+  padding: .9rem 1rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.auth-credentials code {
+  padding: .15rem .35rem;
+  color: var(--brand-strong);
+  background: rgba(255, 255, 255, .8);
+  border-radius: .4rem;
+}
+
+.auth-credentials small,
+.form-note {
+  color: var(--muted);
+}
+
+.placeholder {
+  border-style: dashed;
+  background: linear-gradient(180deg, #fff, #fbfcfb);
+}
+
+.placeholder-art {
+  display: grid;
+  place-items: center;
+  gap: .45rem;
+  min-height: 220px;
+  padding: 1rem;
+  color: var(--brand-strong);
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(244, 234, 216, .95), rgba(232, 240, 236, .98));
+}
+
+.placeholder-art span {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.placeholder-art p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.placeholder .property-body {
+  display: grid;
+  gap: .15rem;
+}
+
+.placeholder .price {
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.placeholder .hero-actions {
+  margin-top: .5rem;
+}
+
+.slot-count {
+  color: var(--brand-strong);
+  font-weight: 800;
+}
+
+.slot-count span {
+  color: var(--accent);
+}
+
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.section {
+  margin: 0 0 3rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-heading p {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.property-card {
+  overflow: hidden;
+}
+
+.property-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.property-body {
+  padding: 1rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 28px;
+  padding: .25rem .6rem;
+  color: var(--brand-strong);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 800;
+}
+
+.price {
+  color: var(--brand);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.meta-list,
+.feature-list {
+  display: flex;
+  gap: .5rem;
+  padding: 0;
+  margin: .85rem 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.meta-list li,
+.feature-list li {
+  padding: .35rem .55rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: .9rem;
+}
+
+.content-card,
+.form-card {
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.stack {
+  display: grid;
+  gap: 1rem;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: block;
+  margin-bottom: .35rem;
+  font-weight: 700;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: .75rem .85rem;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid #b9c6c1;
+  border-radius: var(--radius);
+  font: inherit;
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible,
+.btn:focus-visible {
+  border-color: var(--accent);
+  outline: 3px solid rgba(201, 154, 74, .32);
+  outline-offset: 2px;
+}
+
+fieldset {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+legend {
+  padding: 0 .4rem;
+  font-weight: 800;
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .75rem;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+}
+
+.btn,
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  width: fit-content;
+  padding: .75rem 1rem;
+  color: #fff;
+  background: var(--brand);
+  border: 0;
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover,
+button:hover {
+  background: var(--brand-strong);
+}
+
+.btn-secondary {
+  color: var(--brand-strong);
+  background: #fff;
+}
+
+.btn-outline {
+  color: var(--brand);
+  background: transparent;
+  border: 1px solid var(--brand);
+}
+
+.btn-outline:hover {
+  color: #fff;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.data-table th,
+.data-table td {
+  padding: .8rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+
+.data-table th {
+  color: var(--brand-strong);
+  background: var(--surface-soft);
+}
+
+.table-photo {
+  width: 78px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.table-actions {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.map-box {
+  display: grid;
+  min-height: 320px;
+  place-items: center;
+  padding: 1rem;
+  color: var(--brand-strong);
+  background:
+    linear-gradient(rgba(246, 248, 245, .84), rgba(246, 248, 245, .84)),
+    url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80') center/cover;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.map-frame {
+  overflow: hidden;
+  min-height: 340px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(24, 35, 32, .07);
+}
+
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  min-height: 340px;
+  border: 0;
+}
+
+.location-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.site-footer {
+  color: #fff;
+  background: var(--brand-strong);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr .8fr;
+  gap: 1.5rem;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+.footer-inner p,
+.footer-inner ul {
+  margin: .4rem 0 0;
+  color: rgba(255, 255, 255, .82);
+}
+
+.footer-inner ul {
+  padding: 0;
+  list-style: none;
+}
+
+.footer-inner a {
+  color: rgba(255, 255, 255, .9);
+}
+
+.copyright {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  color: rgba(255, 255, 255, .74);
+  border-top: 1px solid rgba(255, 255, 255, .12);
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .grid-2,
+  .grid-3,
+  .auth-grid,
+  .role-grid,
+  .footer-inner,
+  .gallery,
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .main-nav ul {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .main-nav ul ul {
+    position: static;
+    box-shadow: none;
+    margin-left: 1rem;
+  }
+
+  .main-nav a {
+    width: 100%;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 620px) {
+  .form-grid,
+  .checks {
+    grid-template-columns: 1fr;
+  }
+
+  .hero,
+  .page-hero {
+    padding-block: 2.5rem;
+  }
+
+  main {
+    padding-inline: 1rem;
+  }
+}
+
+body.homepage .property-card {
+  display: none;
+}
+
+body.homepage:has(#tipo-rapido option[value=""]:checked):has(#comuna-rapida option[value=""]:checked) .property-card {
+  display: block;
+}
+
+body.homepage:has(#tipo-rapido option[value=""]:checked):has(#comuna-rapida option[value="La Serena"]:checked) .property-card.filter-la-serena,
+body.homepage:has(#tipo-rapido option[value=""]:checked):has(#comuna-rapida option[value="Coquimbo"]:checked) .property-card.filter-coquimbo,
+body.homepage:has(#tipo-rapido option[value=""]:checked):has(#comuna-rapida option[value="Ovalle"]:checked) .property-card.filter-ovalle {
+  display: block;
+}
+
+body.homepage:has(#tipo-rapido option[value="Casa"]:checked):has(#comuna-rapida option[value=""]:checked) .property-card.filter-casa,
+body.homepage:has(#tipo-rapido option[value="Departamento"]:checked):has(#comuna-rapida option[value=""]:checked) .property-card.filter-departamento,
+body.homepage:has(#tipo-rapido option[value="Terreno"]:checked):has(#comuna-rapida option[value=""]:checked) .property-card.filter-terreno {
+  display: block;
+}
+
+body.homepage:has(#tipo-rapido option[value="Casa"]:checked):has(#comuna-rapida option[value="La Serena"]:checked) .property-card.filter-casa.filter-la-serena,
+body.homepage:has(#tipo-rapido option[value="Casa"]:checked):has(#comuna-rapida option[value="Coquimbo"]:checked) .property-card.filter-casa.filter-coquimbo,
+body.homepage:has(#tipo-rapido option[value="Casa"]:checked):has(#comuna-rapida option[value="Ovalle"]:checked) .property-card.filter-casa.filter-ovalle,
+body.homepage:has(#tipo-rapido option[value="Departamento"]:checked):has(#comuna-rapida option[value="La Serena"]:checked) .property-card.filter-departamento.filter-la-serena,
+body.homepage:has(#tipo-rapido option[value="Departamento"]:checked):has(#comuna-rapida option[value="Coquimbo"]:checked) .property-card.filter-departamento.filter-coquimbo,
+body.homepage:has(#tipo-rapido option[value="Departamento"]:checked):has(#comuna-rapida option[value="Ovalle"]:checked) .property-card.filter-departamento.filter-ovalle,
+body.homepage:has(#tipo-rapido option[value="Terreno"]:checked):has(#comuna-rapida option[value="La Serena"]:checked) .property-card.filter-terreno.filter-la-serena,
+body.homepage:has(#tipo-rapido option[value="Terreno"]:checked):has(#comuna-rapida option[value="Coquimbo"]:checked) .property-card.filter-terreno.filter-coquimbo,
+body.homepage:has(#tipo-rapido option[value="Terreno"]:checked):has(#comuna-rapida option[value="Ovalle"]:checked) .property-card.filter-terreno.filter-ovalle {
+  display: block;
+}
+
+  
+.topbar .login-btn .btn-login {
+  background-color: #f6e27f;  
+  color: #182320;              
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.topbar .login-btn .btn-login:hover {
+  background-color: #f4d35e;   
+  color: #182320;
+}
+
+
+/* Contenedor principal: dos columnas */
+.gallery {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Foto principal */
+.gallery-photos .main-photo {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+
+/* Miniaturas debajo de la foto principal */
+.gallery-photos .thumbnails {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gallery-photos .thumbnails img {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.gallery-photos .thumbnails img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+
+/* Columna derecha: información */
+.gallery-side {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.gallery-side h2 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+}
+
+.gallery-side .meta-list,
+.gallery-side .feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.gallery-side .meta-list li,
+.gallery-side .feature-list li {
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+/* Descripción debajo de las miniaturas */
+.description-box {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 24px rgba(24, 35, 32, .07);
+  padding: 1.25rem 1.5rem;
+  margin-top: 1rem;
+}
+
+.description-box h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 .6rem;
+  color: var(--ink);
+}
+
+.description-box p {
+  margin: 0;
+  color: #3a4a46;
+  font-size: .95rem;
+  line-height: 1.7;
+}
+
+.gallery-photos {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+/* Fondo continuo en portada */
+body.homepage .site-header,
+body.homepage .hero {
+  color: #fff;
+  background: linear-gradient(135deg, rgba(10,55,50,.96), rgba(15,79,71,.92)),
+    url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1800&q=80') center/cover;
+}
+
+body.homepage .hero {
+  padding: 6rem 1.25rem 12rem;
+  margin-bottom: 0;
+  display: flex;              
+  flex-direction: column;     
+  align-items: center;        
+  text-align: center;         
+  gap: 2rem;                 
+}
+
+
+/* Mostrar siempre propiedades en portada */
+body.homepage .property-card {
+  display: block;
+}
+
+/* Mantener compatibilidad con filtros rápidos */
+body.homepage:has(#tipo-rapido option[value="Casa"]:checked) .property-card.filter-casa,
+body.homepage:has(#tipo-rapido option[value="Departamento"]:checked) .property-card.filter-departamento,
+body.homepage:has(#tipo-rapido option[value="Terreno"]:checked) .property-card.filter-terreno,
+body.homepage:has(#comuna-rapida option[value="La Serena"]:checked) .property-card.filter-la-serena,
+body.homepage:has(#comuna-rapida option[value="Coquimbo"]:checked) .property-card.filter-coquimbo,
+body.homepage:has(#comuna-rapida option[value="Ovalle"]:checked) .property-card.filter-ovalle {
+  display: block;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+/*Mensajes de error de validacion de formularios */
+
+.form-error {
+  display: block;
+  margin-top: .35rem;
+  color: #b3261e;
+  font-size: .85rem;
+  font-weight: 600;
+  min-height: 1.1em;
+}
+
+/* Inputs numéricos dentro de características adicionales */
+.checks .check-row input[type="number"] {
+  width: 100%;
+  min-width: 80px;
+  min-height: 46px;
+}
+
+.checks .check-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checks .check-row label {
+  flex: 1 1 auto;
+  margin-bottom: 0;
+}

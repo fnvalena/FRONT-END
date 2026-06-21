@@ -1,0 +1,94 @@
+REGISTRO DE PROMPTS USADOS CON IA
+Herramienta utilizada: GitHub Copilot en Visual Studio Code
+Proyecto: PNK Inmobiliaria
+Restricción indicada: trabajar solo con HTML y CSS
+
+Prompt 1:
+Actúa como asistente de desarrollo frontend dentro de Visual Studio Code. Necesito mejorar el proyecto PNK Inmobiliaria sin borrar los avances existentes de mi compañera. El proyecto debe seguir siendo un sitio estático hecho solo con HTML y CSS. Mejora el diseño visual general, crea un archivo CSS global, define una paleta de colores profesional para una inmobiliaria, usa una tipografía moderna, mejora los espaciados, botones, formularios, tarjetas de propiedades y navegación. También considera accesibilidad, contraste, foco visible y diseño responsive.
+
+Prompt 2:
+Revisa todas las páginas HTML del proyecto PNK Inmobiliaria y conecta cada una con un archivo global css/styles.css. Mantén la navegación entre todos los módulos: inicio, registro propietario, registro gestor, login, recuperar contraseña, buscador, listado de propiedades, publicar propiedad, detalle de propiedad, mapa, dashboard, quiénes somos y contacto. Corrige textos con problemas de acentos o codificación y mejora la estructura semántica usando header, nav, main, section, article y footer.
+
+Prompt 3:
+Mejora la accesibilidad del sitio. Agrega textos alternativos descriptivos en las imágenes, labels asociados a todos los inputs, selects y textarea, aria-label cuando sea necesario, botón o enlace para saltar al contenido principal, estados de foco visibles en enlaces, botones y campos de formulario. Asegúrate de que el contraste de colores sea legible y que el sitio pueda navegarse correctamente con teclado.
+
+Prompt 4:
+Diseña la página principal index.html como portada de una inmobiliaria. Debe tener un encabezado visual, nombre PNK Inmobiliaria, menú de navegación, datos de contacto, sección hero, buscador rápido de propiedades, botones principales para buscar y publicar, sección de propiedades destacadas y tarjetas con foto, código, título, dirección, precio en pesos chilenos, valor en UF, dormitorios, baños y botón “Quiero saber más”.
+
+Prompt 5:
+Mejora listado-propiedades.html para mostrar las propiedades como tarjetas responsivas. Cada tarjeta debe incluir imagen, código de propiedad, nombre, dirección o sector, precio en pesos chilenos, valor en UF, características principales y botones para ver más información y abrir la ubicación. El diseño debe adaptarse a escritorio y móvil usando solo CSS.
+
+Prompt 6:
+Mejora buscador-propiedad.html para que tenga un formulario visualmente ordenado y accesible. Debe permitir buscar por operación, tipo de inmueble, provincia, comuna y sector. Agrega botones para buscar, buscar en mapa y buscar por código de propiedad. Todo debe funcionar como navegación HTML estática, sin JavaScript.
+
+Prompt 7:
+Mejora publicar-propiedad.html según los requerimientos del PDF. El formulario debe pedir tipo de propiedad, fecha de publicación, provincia, comuna, sector, fotografías de 1 a 10, dormitorios, baños, área total del terreno, área construida, precio en pesos, precio en UF, descripción y características adicionales como bodega, estacionamiento, logia, cocina amoblada, antejardín, patio trasero y piscina. Usa solo HTML y CSS.
+
+Prompt 8:
+Mejora registro-propietario.html. El formulario debe incluir RUT, nombre completo, fecha de nacimiento, correo electrónico, contraseña, sexo, teléfono móvil y número de propiedad según Bienes Raíces. Indica que la cuenta queda pendiente hasta revisión del administrador. El formulario debe ser responsive, accesible y visualmente ordenado.
+
+Prompt 9:
+Mejora registro-gestor.html. El formulario debe incluir RUT, nombre completo, fecha de nacimiento, correo electrónico, contraseña, sexo, teléfono móvil y certificado de antecedentes en PDF. Agrega una nota indicando que si la postulación es aceptada el gestor recibirá un PENKA_ID. Mantén el diseño accesible, responsive y solo con HTML y CSS.
+
+Prompt 10:
+Mejora login.html y recuperar-contraseña.html. El login debe tener usuario o correo, contraseña, botón ingresar, botón cancelar y enlace a recuperación. La página de recuperación debe tener un campo de correo electrónico y botón para enviar enlace de recuperación. Usa formularios accesibles, labels, autocomplete y diseño consistente con el resto del sitio.
+
+Prompt 11:
+Mejora administracion.php como dashboard de administración. Debe mostrar indicadores visuales de usuarios pendientes, avisos publicados y gestores activos. Además debe incluir formularios tipo CRUD para usuarios y propiedades, con acciones como ingresar, habilitar, modificar, dar de baja, publicar, despublicar y eliminar. Todo debe ser maqueta HTML/CSS.
+
+Prompt 12:
+Mejora contacto.html y quienes-somos.html. Contacto debe tener formulario con nombre, correo y mensaje, datos de contacto, dirección, teléfono, correo y botón de WhatsApp. Quiénes somos debe incluir historia, misión, visión y valores de PNK Inmobiliaria. Mantén estilo visual consistente, responsive y accesible.
+
+Prompt 13:
+Agrega mapas conectados a cada propiedad sin usar JavaScript. Usa iframes o enlaces directos de Google Maps dentro del HTML. Cada detalle de propiedad debe mostrar un mapa embebido con su dirección y un botón para abrir la ubicación en Google Maps. También mejora mapa.html y buscar-mapa.html para listar las ubicaciones de las propiedades.
+
+Prompt 14:
+Actualiza la propiedad N°1 usando las fotos locales entregadas. Debe quedar como una casa en venta ubicada en Av. Del Santuario 1977, Peñuelas, Coquimbo. Agrega código C0125457, precio $350.000.000, valor UF aproximado, 5 dormitorios, 4 baños, 300 m² totales, descripción, características como cocina amoblada, estacionamiento, patio, piscina, quincho, vista al mar, galería de fotos locales y mapa conectado a Google Maps.
+
+Prompt 15:
+Copia únicamente las fotos reales de la propiedad N°1 a la carpeta img del proyecto. No uses como imágenes de galería las capturas que solo contienen datos, mapas o información de referencia. Actualiza index.html, listado-propiedades.html, detalle-propiedad.html, mapa.html y buscar-mapa.html para mostrar la propiedad N°1 con sus fotos y datos correctos.
+
+Prompt 16:
+Actualiza la propiedad N°2 usando las fotos locales entregadas. Debe quedar como casa en venta en Bartolomé Blanche con San Joaquín, San Joaquín, La Serena, Coquimbo. Agrega código C0248711, precio $385.640.810, UF 9.500, 4 dormitorios, 3 baños, 372,5 m² totales, 140 m² construidos, 2 estacionamientos, 18 años de antigüedad, descripción, galería de fotos locales y mapa conectado a Google Maps.
+
+Prompt 17:
+Crea una página nueva detalle-propiedad-2.html para la propiedad N°2. Debe incluir encabezado, navegación, galería principal, galería secundaria, precio en pesos, valor en UF, descripción, lista de características, botón solicitar visita, botones para compartir en redes sociales, dirección exacta y mapa embebido de Google Maps. Mantén solo HTML y CSS.
+
+Prompt 18:
+Actualiza la propiedad N°3 usando las fotos locales entregadas. Debe quedar como casa turística en venta ubicada en Girasol Hotel, Algarrobito, Serena, La Serena, Coquimbo. Agrega código C0098622, precio $253.020.965, UF 6.233, 9 dormitorios, 6 baños, 285 m² construidos aproximados, 5.000 m² totales, 10 estacionamientos, 11 años de antigüedad, piscina, quincho, cancha de básquetbol, terrazas, cabañas, condominio cerrado, vista al valle, descripción y mapa conectado a Google Maps.
+
+Prompt 19:
+Crea una página nueva detalle-propiedad-3.html para la propiedad N°3. Debe incluir galería de fotos locales, descripción de propiedad turística, datos principales, características adicionales, botón para solicitar visita, botones para compartir en Facebook, Twitter y WhatsApp, dirección exacta y mapa embebido. La ficha debe mantener el mismo diseño visual de las otras propiedades.
+
+Prompt 20:
+Copia únicamente las fotos reales de la propiedad N°3 a la carpeta img. No dejes como imagen de galería la captura que contiene solo información, precio, características o dirección. Verifica que index.html, listado-propiedades.html, mapa.html y buscar-mapa.html enlacen correctamente a detalle-propiedad-3.html.
+
+Prompt 21:
+Corrige la tercera propiedad porque no se visualizan las imágenes en la página principal, listado ni detalle. Revisa que las rutas src de las imágenes coincidan exactamente con los nombres reales de los archivos dentro de la carpeta img. Corrige cualquier error de nombre o timestamp en las rutas de las imágenes.
+
+Prompt 22:
+Verifica que el proyecto no tenga archivos .py ni .js y que no se esté usando la etiqueta script. El proyecto debe mantenerse solo con HTML y CSS. Revisa además que las páginas principales enlacen correctamente css/styles.css y que las páginas de detalle de propiedades estén conectadas desde los botones “Quiero saber más”.
+
+Prompt 23:
+Cambia el valor de venta de la propiedad N°1 a $560.000.000 en todas las páginas donde aparezca: página principal, listado de propiedades, detalle de propiedad, mapa y búsqueda por mapa. Mantén también un valor en UF actualizado o indicado como aproximado.
+------------------------------------------------------ Prompts HTML y correciones ----------------------------------------------------------------------------------------
+Estructura HTML inicial  
+“Define la estructura base de la página web para una inmobiliaria, incluyendo header con topbar y navegación, sección hero, main con propiedades destacadas y footer con datos de contacto.”
+
+Distribución del hero  
+“Ajusta la sección hero para que pueda mostrarse primero en dos columnas (texto + buscador) y luego en una sola columna centrada, con fondo continuo desde el header.”
+
+Corrección de navegación  
+“Corrige la ubicación del bloque de navegación nav-wrap para evitar duplicaciones y asegúrate de que quede dentro del header.”
+
+Filtros rápidos  
+“Agrega selectores de tipo de propiedad y comuna en el hero, y define reglas CSS para mostrar/ocultar propiedades según la selección.”
+
+Estilos CSS  
+“Aplica estilos de tipografía, colores, botones y layout; asegura que el fondo sea continuo en portada y que los estilos respondan correctamente en media queries.”
+
+Depuración de duplicados  
+“Identifica y elimina bloques repetidos de CSS, como la doble definición de .hero, para evitar conflictos de estilos.”
+
+Galería de propiedades  
+“Define una galería de fotos para las propiedades con foto principal, miniaturas debajo y caja de descripción al costado, mejorando la presentación visual.”

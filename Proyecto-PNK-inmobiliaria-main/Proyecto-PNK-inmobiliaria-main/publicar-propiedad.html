@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publicar Propiedad - PNK Inmobiliaria</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+<header class="site-header">
+<div class="topbar"><a class="brand" href="index.html"><span class="brand-mark">PNK</span><span>PNK Inmobiliaria</span></a><div class="contact-strip"></div></div>
+<div class="nav-wrap"><nav class="main-nav" aria-label="Navegación principal"><ul><li><a href="index.html">Inicio</a></li><li><a href="registro-propietario.html">Registrarme</a><ul><li><a href="registro-propietario.html">Propietario</a></li><li><a href="registro-gestor.html">Gestor</a></li></ul></li><li><a href="login.html">Ingresar</a></li><li><a href="buscador-propiedad.html">Buscar</a></li><li><a href="publicar-propiedad.html">Publicar</a></li><li><a href="quienes-somos.html">Quiénes Somos</a></li><li><a href="administracion.php">Dashboard</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav></div>
+<section class="page-hero"><p class="eyebrow">Registro de propiedades</p><h1>Publicar una propiedad</h1><p>Publica: casas, departamentos y terrenos.</p></section>
+</header>
+<main id="contenido">
+<section class="section form-card">
+<form id="formPublicacion" action="procesar_propiedad.php" method="post" enctype="multipart/form-data" novalidate>
+<div class="form-grid">
+
+  <div>
+    <label for="tipo">Tipo de propiedad</label>
+    <select id="tipo" name="tipo" required>
+      <option value="">Seleccione</option>
+      <option>Casa</option>
+      <option>Departamento</option>
+      <option>Terreno</option>
+    </select>
+    <small class="form-error" id="error-tipo"></small>
+  </div>
+
+  <div>
+    <label for="fecha-publicacion">Fecha de publicación</label>
+    <input type="date" id="fecha-publicacion" name="fecha-publicacion" required>
+    <small class="form-error" id="error-fecha-publicacion"></small>
+  </div>
+
+  <div>
+    <label for="provincia">Provincia</label>
+    <select id="provincia" name="provincia" required>
+      <option value="">Seleccione</option>
+      <option>Elqui</option>
+      <option>Limarí</option>
+      <option>Choapa</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="comuna">Comuna</label>
+    <select id="comuna" name="comuna" required>
+      <option value="">Seleccione</option>
+      <option>La Serena</option>
+      <option>Coquimbo</option>
+      <option>Vicuña</option>
+      <option>Ovalle</option>
+      <option>Monte Patria</option>
+      <option>Illapel</option>
+      <option>Los Vilos</option>
+      <option>Salamanca</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="sector">Sector</label>
+    <input type="text" id="sector" name="sector" placeholder="Ejemplo: El Milagro" required>
+  </div>
+
+  <div>
+    <label for="fotos">Fotografías (1 a 10)</label>
+    <input type="file" id="fotos" name="fotos[]" accept="image/*" multiple required>
+    <small class="form-error" id="error-fotos"></small>
+  </div>
+
+  <div>
+    <label for="dormitorios">Dormitorios</label>
+    <input type="number" id="dormitorios" name="dormitorios" min="0" required>
+    <small class="form-error" id="error-dormitorios"></small>
+  </div>
+
+  <div>
+    <label for="banos">Baños</label>
+    <input type="number" id="banos" name="banos" min="0" required>
+    <small class="form-error" id="error-banos"></small>
+  </div>
+
+  <div>
+    <label for="area-total">Área total del terreno (m²)</label>
+    <input type="number" id="area-total" name="area-total" min="0" required>
+    <small class="form-error" id="error-area-total"></small>
+  </div>
+
+  <div>
+    <label for="area-construida">Área construida (m²)</label>
+    <input type="number" id="area-construida" name="area-construida" min="0" required>
+    <small class="form-error" id="error-area-construida"></small>
+  </div>
+
+  <div>
+    <label for="precio">Precio en $ CLP</label>
+    <input type="number" id="precio" name="precio" min="0" required>
+    <small class="form-error" id="error-precio"></small>
+  </div>
+
+  <div>
+    <label for="precioUF">Precio en UF (calculado automáticamente)</label>
+    <input type="number" id="precioUF" name="precioUF" min="0" step="0.01" readonly required>
+    <small class="form-note" id="uf-info">Obteniendo valor actualizado de la UF...</small>
+    <small class="form-error" id="error-precioUF"></small>
+  </div>
+
+  <div class="full">
+    <label for="descripcion">Descripción</label>
+    <textarea id="descripcion" name="descripcion" required></textarea>
+    <small class="form-error" id="error-descripcion"></small>
+  </div>
+
+  <div class="full">
+    <label for="visita">¿Ofrece opción de solicitar visita?</label>
+    <select id="visita" name="visita" required>
+      <option value="">Seleccione</option>
+      <option value="si">Sí, permitir solicitar visita</option>
+      <option value="no">No por ahora</option>
+    </select>
+    <small class="form-error" id="error-visita"></small>
+  </div>
+
+</div>
+
+<fieldset>
+  <legend>Características adicionales</legend>
+
+  <div class="checks">
+
+    <div class="check-row">
+      <label for="bodega">Bodega</label>
+      <select id="bodega" name="bodega" required>
+        <option value="">Seleccione</option>
+        <option value="si">Sí</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+
+    <div class="check-row">
+      <label for="estacionamiento">Estacionamiento (cantidad)</label>
+      <input type="number" id="estacionamiento" name="estacionamiento" min="0" required>
+    </div>
+
+    <div class="check-row">
+      <label for="logia">Logia (cantidad)</label>
+      <input type="number" id="logia" name="logia" min="0" required>
+    </div>
+
+    <div class="check-row">
+      <label for="cocina-amoblada">Cocina amoblada (cantidad)</label>
+      <input type="number" id="cocina-amoblada" name="cocina-amoblada" min="0" required>
+    </div>
+
+    <div class="check-row">
+      <label for="antejardin">Antejardín (cantidad)</label>
+      <input type="number" id="antejardin" name="antejardin" min="0" required>
+    </div>
+
+    <div class="check-row">
+      <label for="patio-trasero">Patio trasero (cantidad)</label>
+      <input type="number" id="patio-trasero" name="patio-trasero" min="0" required>
+    </div>
+
+    <div class="check-row">
+      <label for="piscina">Piscina (cantidad)</label>
+      <input type="number" id="piscina" name="piscina" min="0" required>
+    </div>
+
+  </div>
+</fieldset>
+
+<button type="submit">Publicar propiedad</button>
+</form>
+</section>
+</main>
+<footer class="site-footer"><p class="copyright">&copy; 2026 PNK Inmobiliaria - Todos los derechos reservados</p></footer>
+
+<script src="js/publicar-propiedad.js"></script>
+</body>
+</html>

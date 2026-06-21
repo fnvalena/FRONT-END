@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PNK Inmobiliaria: búsqueda, publicación y gestión de propiedades en la Región de Coquimbo.">
+  <title>PNK Inmobiliaria | Propiedades en Coquimbo</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="homepage">
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+<header class="site-header">
+  <div class="topbar">
+    <!-- Logo a la izquierda -->
+    <a class="brand" href="index.html" aria-label="Ir al inicio">
+      <span class="brand-mark">PNK</span>
+      <span>PNK Inmobiliaria</span>
+    </a>
+
+    <!-- Datos de contacto -->
+    <div class="contact-strip" aria-label="Datos de contacto">
+      <span>La Serena y Coquimbo</span>
+      <span>contacto@pnkinmobiliaria.cl</span>
+      <span>+56 9 4411 6374</span>
+    </div>
+
+    <!-- Botón Iniciar Sesión -->
+    <div class="login-btn">
+      <a href="login.html" class="btn">Iniciar Sesión</a>
+    </div>
+  </div>
+
+  <!-- Navegación -->
+
+  <div class="nav-wrap">
+    <nav class="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li>
+          <a href="registro-propietario.html">Registrarme</a>
+          <ul aria-label="Opciones de registro">
+            <li><a href="registro-propietario.html">Propietario</a></li>
+            <li><a href="registro-gestor.html">Gestor</a></li>
+          </ul>
+        </li>
+        <li><a href="login.html">Ingresar</a></li>
+        <li><a href="buscador-propiedad.html">Buscar</a></li>
+        <li><a href="publicar-propiedad.html">Publicar</a></li>
+        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+        <li><a href="administracion.php">Dashboard</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Hero dentro del header -->
+  <section class="hero">
+    <p class="eyebrow">Región de Coquimbo</p>
+    <h1>Encuentra, publica y gestiona propiedades con confianza</h1>
+    <p>Publica inmuebles, postula como gestor inmobiliario free o encuentra propiedades por provincia, comuna y sector.</p>
+
+    <!-- Buscador rápido -->
+    <aside class="search-panel" aria-label="Buscador rápido de propiedades">
+      <!-- Botones arriba -->
+      <div class="hero-actions">
+        <a class="btn" href="buscador-propiedad.html">Buscar propiedad</a>
+        <a class="btn btn-secondary" href="publicar-propiedad.html">Publicar inmueble</a>
+      </div>
+
+      <div class="filter-form">
+        <div>
+          <label for="tipo-rapido">Tipo de propiedad</label>
+          <select id="tipo-rapido" name="tipo">
+            <option value="" selected>Todas</option>
+            <option value="Casa">Casa</option>
+            <option value="Departamento">Departamento</option>
+            <option value="Terreno">Terreno</option>
+          </select>
+        </div>
+        <div>
+          <label for="comuna-rapida">Comuna</label>
+          <select id="comuna-rapida" name="comuna">
+            <option value="" selected>Toda la región</option>
+            <option value="La Serena">La Serena</option>
+            <option value="Coquimbo">Coquimbo</option>
+            <option value="Ovalle">Ovalle</option>
+          </select>
+        </div>
+        <a class="btn btn-secondary" href="#propiedades-destacadas">Ver filtrados</a>
+      </div>
+    </aside>
+  </section>
+</header>
+
+
+
+
+  <main id="contenido">
+    <section class="section" id="propiedades-destacadas">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Propiedades destacadas</p>
+          <h2>Opciones recientes para comprar o publicar</h2>
+        </div>
+        <p>Casas, departamentos y terrenos disponibles en La Serena, Coquimbo, Ovalle y otras comunas de la región.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="property-card filter-casa filter-coquimbo">
+          <img src="img/Captura%20de%20pantalla%202026-05-30%20220818.png" alt="Fachada de casa moderna en Peñuelas, Coquimbo">
+          <div class="property-body">
+            <span class="badge">Cód: C0125457</span>
+            <h3>Amplia y moderna casa en Peñuelas</h3>
+            <p>Av. Del Santuario 1977, Coquimbo</p>
+            <p class="price">$560.000.000</p>
+            <ul class="meta-list" aria-label="Características principales">
+              <li>UF 14.358 aprox.</li>
+              <li>5 dormitorios</li>
+              <li>4 baños</li>
+              <li>300 m² totales</li>
+            </ul>
+            <a class="btn btn-outline" href="detalle-propiedad.html">Quiero saber más</a>
+          </div>
+        </article>
+
+        <article class="property-card filter-casa filter-la-serena">
+          <img src="img/Captura%20de%20pantalla%202026-05-30%20221540.png" alt="Fachada de casa en venta en San Joaquín, La Serena">
+          <div class="property-body">
+            <span class="badge">Cód: D0248711</span>
+            <h3>Casa en venta en San Joaquín</h3>
+            <p>Bartolomé Blanche con San Joaquín, La Serena</p>
+            <p class="price">$385.640.810</p>
+            <ul class="meta-list" aria-label="Características principales">
+              <li>UF 9.500</li>
+              <li>4 dormitorios</li>
+              <li>3 baños</li>
+              <li>372,5 m² totales</li>
+            </ul>
+            <a class="btn btn-outline" href="detalle-propiedad-2.html">Quiero saber más</a>
+          </div>
+        </article>
+
+        <article class="property-card filter-casa filter-la-serena">
+          <img src="img/Captura%20de%20pantalla%202026-05-30%20221921.png" alt="Interior de casa turística en Algarrobito, La Serena">
+          <div class="property-body">
+            <span class="badge">Cód: C0098622</span>
+            <h3>Casa turística en Algarrobito</h3>
+            <p>Girasol Hotel, Algarrobito, La Serena</p>
+            <p class="price">$253.020.965</p>
+            <ul class="meta-list" aria-label="Características principales">
+              <li>UF 6.233</li>
+              <li>9 dormitorios</li>
+              <li>6 baños</li>
+              <li>5.000 m² totales</li>
+            </ul>
+            <a class="btn btn-outline" href="detalle-propiedad-3.html">Quiero saber más</a>
+          </div>
+        </article>
+
+        <article class="property-card filter-casa filter-la-serena">
+          <img src="img/propiedad4-01.png" alt="Fachada de casa en Serena Oriente, La Serena">
+          <div class="property-body">
+            <span class="badge">Cód: C0550041</span>
+            <h3>Casa en venta Serena Oriente</h3>
+            <p>Serena Oriente, La Serena</p>
+            <p class="price">$223.265.732</p>
+            <ul class="meta-list" aria-label="Características principales">
+              <li>UF 5.500</li>
+              <li>3 dormitorios</li>
+              <li>2 baños</li>
+              <li>252,32 m² totales</li>
+            </ul>
+            <a class="btn btn-outline" href="detalle-propiedad-4.html">Quiero saber más</a>
+          </div>
+        </article>
+
+        <article class="property-card filter-departamento filter-la-serena">
+          <img src="img/propiedad5-01.png" alt="Vista al mar desde el departamento en Avenida del Mar, La Serena">
+          <div class="property-body">
+            <span class="badge">Cód: D0450005</span>
+            <h3>Hermosa vista al mar</h3>
+            <p>Av. Pacífico 4891, La Serena</p>
+            <p class="price">$182.671.963</p>
+            <ul class="meta-list" aria-label="Características principales">
+              <li>UF 4.500</li>
+              <li>2 dormitorios</li>
+              <li>2 baños</li>
+              <li>78 m² totales</li>
+            </ul>
+            <a class="btn btn-outline" href="detalle-propiedad-5.html">Quiero saber más</a>
+          </div>
+        </article>
+
+        <article class="property-card filter-departamento filter-la-serena">
+          <img src="img/propiedad6-01.png" alt="Vista exterior del sector Laguna del Mar">
+          <div class="property-body">
+            <span class="badge">Cód: D0520006</span>
+            <h3>Departamento en Laguna del Mar</h3>
+            <p>Laguna del Mar, La Serena</p>
+            <p class="price">UF 5.100</p>
+            <ul class="meta-list" aria-label="Características principales">
+              <li>3 dormitorios</li>
+              <li>2 baños</li>
+              <li>96,34 m² totales</li>
+              <li>1 estacionamiento</li>
+            </ul>
+            <a class="btn btn-outline" href="detalle-propiedad-6.html">Quiero saber más</a>
+          </div>
+        </article>
+
+        <article class="property-card filter-terreno filter-ovalle">
+          <img src="img/propiedad7-01.png" alt="Terreno en Talhuén, Ovalle">
+          <div class="property-body">
+            <span class="badge">Cód: D0520007</span>
+            <h3>Terreno en Talhuén</h3>
+            <p>Flor del Norte, A-9, Ovalle</p>
+            <p class="price">UF 20.000</p>
+            <ul class="meta-list" aria-label="Características principales">
+              <li>5.000 m² totales</li>
+              <li>Acceso tierra</li>
+              <li>61 m de frente</li>
+              <li>62 m de fondo</li>
+            </ul>
+            <a class="btn btn-outline" href="detalle-propiedad-7.html">Quiero saber más</a>
+          </div>
+        </article>
+
+        <article class="property-card filter-casa filter-coquimbo">
+          <img src="img/propiedad8-01.png" alt="Fachada principal de la casa en Nova Hacienda">
+          <div class="property-body">
+            <span class="badge">Cód: D0520008</span>
+            <h3>Nova Hacienda, Coquimbo</h3>
+            <p>Horacio Damke 1072, Coquimbo</p>
+            <p class="price">UF 3.400</p>
+            <ul class="meta-list" aria-label="Características principales">
+              <li>3 dormitorios</li>
+              <li>2 baños</li>
+              <li>144 m² totales</li>
+              <li>1 estacionamiento</li>
+            </ul>
+            <a class="btn btn-outline" href="detalle-propiedad-8.html">Quiero saber más</a>
+          </div>
+        </article>
+
+        <article class="property-card filter-casa filter-coquimbo">
+          <img src="img/propiedad9-01.png" alt="Fachada principal de la casa Olivar Bajo">
+          <div class="property-body">
+            <span class="badge">Cód: D0520009</span>
+            <h3>Casa Olivar Bajo Coquimbo</h3>
+            <p>Antonio Banda, San Juan, Coquimbo</p>
+            <p class="price">$78.548.944</p>
+            <ul class="meta-list" aria-label="Características principales">
+              <li>UF 1.935 aprox.</li>
+              <li>3 dormitorios</li>
+              <li>1 baño</li>
+              <li>180 m² totales</li>
+            </ul>
+            <a class="btn btn-outline" href="detalle-propiedad-9.html">Quiero saber más</a>
+          </div>
+        </article>
+
+        <article class="property-card filter-terreno filter-ovalle">
+          <img src="img/propiedad10-01.png" alt="Terreno en Mineral de Talca, Ovalle">
+          <div class="property-body">
+            <span class="badge">Cód: D0520010</span>
+            <h3>Parcela 5000 m², Ovalle</h3>
+            <p>Cam. Mineral de Talca, Ovalle</p>
+            <p class="price">$7.900.000 por ha</p>
+            <ul class="meta-list" aria-label="Características principales">
+              <li>5.000 m² totales</li>
+              <li>Terreno plano</li>
+              <li>Precio por unidad de área</li>
+              <li>Rol propio</li>
+            </ul>
+            <a class="btn btn-outline" href="detalle-propiedad-10.html">Quiero saber más</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <section>
+        <h2>PNK Inmobiliaria</h2>
+        <p>Plataforma web para publicar, buscar y gestionar propiedades en la Región de Coquimbo.</p>
+      </section>
+      <section>
+        <h2>Contacto</h2>
+        <p>La Serena, Región de Coquimbo</p>
+        <p>+56 9 4411 6374</p>
+        <p>contacto@pnkinmobiliaria.cl</p>
+      </section>
+      <section>
+        <h2>Accesos rápidos</h2>
+        <ul>
+          <li><a href="buscador-propiedad.html">Buscar propiedad</a></li>
+          <li><a href="publicar-propiedad.html">Publicar propiedad</a></li>
+          <li><a href="registro-gestor.html">Ser gestor inmobiliario</a></li>
+          <li><a href="simulacion-prompts.html">Simulación de prompts</a></li>
+        </ul>
+      </section>
+    </div>
+    <p class="copyright">&copy; 2026 PNK Inmobiliaria - Todos los derechos reservados</p>
+  </footer>
+</body>
+</html>
