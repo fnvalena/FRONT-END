@@ -486,5 +486,17 @@ El proyecto cuenta con:
 
 ## Autores
 
-Proyecto académico desarrollado para evaluación de frontend/backend con PHP, MySQL y despliegue web.
+Proyecto académico desarrollado por:
 
+- Maricel Videla.
+- Valentina Ferreira.
+
+Institución:
+
+- INACAP.
+
+Año:
+
+- 2026.
+
+Desarrollo realizado para evaluación de frontend/backend con PHP, MySQL y despliegue web.
