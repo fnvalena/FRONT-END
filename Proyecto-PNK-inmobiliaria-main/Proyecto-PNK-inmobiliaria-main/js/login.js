@@ -107,16 +107,34 @@ document.addEventListener('DOMContentLoaded', function () {
       method: 'POST',
       body: new FormData(form)
     })
-      .then(function (respuesta) { return respuesta.json(); })
+      .then(function (respuesta) {
+        return respuesta.text().then(function (texto) {
+          let data;
+
+          try {
+            data = JSON.parse(texto);
+          } catch (error) {
+            throw new Error(texto || 'El servidor no devolvio una respuesta valida.');
+          }
+
+          if (!respuesta.ok) {
+            throw new Error(data.mensaje || 'No fue posible validar el inicio de sesion.');
+          }
+
+          return data;
+        });
+      })
       .then(function (data) {
         if (data.ok) {
+          const destino = 'dashboard.php';
+
           Swal.fire({
             icon: 'success',
             title: 'Acceso exitoso',
-            text: 'Bienvenido/a. Serás redirigido al panel de administración.',
+            text: 'Bienvenido/a. Seras redirigido a tu panel.',
             confirmButtonText: 'Continuar'
           }).then(function () {
-            window.location.href = 'administracion.php';
+            window.location.href = destino;
           });
         } else {
           Swal.fire({
@@ -127,11 +145,11 @@ document.addEventListener('DOMContentLoaded', function () {
           });
         }
       })
-      .catch(function () {
+      .catch(function (error) {
         Swal.fire({
           icon: 'error',
           title: 'Error de conexión',
-          text: 'No fue posible conectar con el servidor. Intenta nuevamente.',
+          text: error.message || 'No fue posible conectar con el servidor. Intenta nuevamente.',
           confirmButtonText: 'Cerrar'
         });
       });

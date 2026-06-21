@@ -11,10 +11,14 @@
   <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
   <header class="site-header">
     <div class="topbar"><a class="brand" href="index.html"><span class="brand-mark">PNK</span><span>PNK Inmobiliaria</span></a><div class="contact-strip"><span>Registro de usuario</span><span>Propietario</span></div></div>
-    <div class="nav-wrap"><nav class="main-nav" aria-label="Navegación principal"><ul><li><a href="index.html">Inicio</a></li><li><a href="registro-propietario.html">Registrarme</a><ul><li><a href="registro-propietario.html">Propietario</a></li><li><a href="registro-gestor.html">Gestor</a></li></ul></li><li><a href="login.html">Ingresar</a></li><li><a href="buscador-propiedad.html">Buscar</a></li><li><a href="publicar-propiedad.html">Publicar</a></li><li><a href="quienes-somos.html">Quiénes Somos</a></li><li><a href="administracion.php">Dashboard</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav></div>
+    <div class="nav-wrap"><nav class="main-nav" aria-label="Navegación principal"><ul><li><a href="index.html">Inicio</a></li><li><a href="registro-propietario.html">Registrarme</a><ul><li><a href="registro-propietario.html">Propietario</a></li><li><a href="registro-gestor.html">Gestor</a></li></ul></li><li><a href="login.html">Ingresar</a></li><li><a href="buscador-propiedad.html">Buscar</a></li><li><a href="publicar-propiedad.html">Publicar</a></li><li><a href="quienes-somos.html">Quiénes Somos</a></li><li><a href="dashboard.php">Dashboard</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav></div>
     <section class="page-hero"><p class="eyebrow">Propietario</p><h1>Registrarme como propietario</h1><p>Crea una cuenta para publicar y administrar los antecedentes de tus inmuebles.</p></section>
   </header>
   <main id="contenido">
+    <div class="module-actions" aria-label="Acciones de navegacion">
+      <button type="button" class="btn btn-outline" onclick="if (window.history.length > 1) { window.history.back(); } else { window.location.href='dashboard.php'; }">&larr; Volver</button>
+    </div>
+
     <section class="section form-card">
       <form id="formPropietario" action="procesar_propietario.php" method="post" novalidate>
         <div class="form-grid">

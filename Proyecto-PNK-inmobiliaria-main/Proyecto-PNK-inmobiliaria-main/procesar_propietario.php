@@ -49,6 +49,26 @@ if (!empty($errores)) {
     exit;
 }
 
+$check = $conexion->prepare("SELECT rut, correo FROM propietarios WHERE rut = ? OR correo = ? LIMIT 1");
+$check->bind_param('ss', $rut, $correo);
+$check->execute();
+$existente = $check->get_result();
+
+if ($existente->num_rows > 0) {
+    $filaExistente = $existente->fetch_assoc();
+
+    if ($filaExistente['rut'] === $rut) {
+        $errores[] = 'El RUT ingresado ya se encuentra registrado.';
+    }
+
+    if ($filaExistente['correo'] === $correo) {
+        $errores[] = 'El correo electronico ingresado ya se encuentra registrado.';
+    }
+
+    echo json_encode(['ok' => false, 'mensaje' => 'No se pudo registrar al propietario.', 'errores' => $errores]);
+    exit;
+}
+
 
 $passwordHash = password_hash($password, PASSWORD_BCRYPT);
 

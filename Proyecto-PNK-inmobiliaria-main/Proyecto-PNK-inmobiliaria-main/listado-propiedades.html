@@ -34,7 +34,7 @@
           <li><a href="buscador-propiedad.html">Buscar</a></li>
           <li><a href="publicar-propiedad.html">Publicar</a></li>
           <li><a href="quienes-somos.html">Quiénes Somos</a></li>
-          <li><a href="administracion.php">Dashboard</a></li>
+          <li><a href="dashboard.php">Dashboard</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
@@ -46,6 +46,10 @@
     </section>
   </header>
   <main id="contenido">
+    <div class="module-actions" aria-label="Acciones de navegacion">
+      <button type="button" class="btn btn-outline" onclick="if (window.history.length > 1) { window.history.back(); } else { window.location.href='dashboard.php'; }">&larr; Volver</button>
+    </div>
+
     <section class="section grid grid-3">
       <article class="property-card">
         <img src="img/Captura%20de%20pantalla%202026-05-30%20220818.png" alt="Fachada de casa moderna en Peñuelas, Coquimbo">
@@ -296,3 +300,4 @@
   </footer>
 </body>
 </html>
+

@@ -34,7 +34,7 @@
           <li><a href="buscador-propiedad.html">Buscar</a></li>
           <li><a href="publicar-propiedad.html">Publicar</a></li>
           <li><a href="quienes-somos.html">Quiénes Somos</a></li>
-          <li><a href="administracion.php">Dashboard</a></li>
+          <li><a href="dashboard.php">Dashboard</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
@@ -47,7 +47,10 @@
   </header>
 
   <main id="contenido">
-    <!-- Bloque principal: carrusel -->
+    <div class="module-actions" aria-label="Acciones de navegacion">
+      <button type="button" class="btn btn-outline" onclick="if (window.history.length > 1) { window.history.back(); } else { window.location.href='dashboard.php'; }">&larr; Volver</button>
+    </div>
+<!-- Bloque principal: carrusel -->
     <section class="section gallery" aria-label="Detalle de la propiedad">
       <!-- Columna izquierda: fotos -->
       <div class="gallery-photos">
@@ -131,3 +134,4 @@
   </footer>
 </body>
 </html>
+

@@ -368,6 +368,10 @@ main {
   padding: 2rem 1.25rem 4rem;
 }
 
+.module-actions {
+  margin-bottom: 1.5rem;
+}
+
 .section {
   margin: 0 0 3rem;
 }

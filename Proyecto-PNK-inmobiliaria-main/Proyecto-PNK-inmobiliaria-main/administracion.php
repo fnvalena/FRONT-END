@@ -37,7 +37,7 @@
           <li><a href="buscador-propiedad.html">Buscar</a></li>
           <li><a href="publicar-propiedad.html">Publicar</a></li>
           <li><a href="quienes-somos.html">Quienes Somos</a></li>
-          <li><a href="administracion.php">Dashboard</a></li>
+          <li><a href="dashboard.php">Dashboard</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
@@ -54,6 +54,10 @@
   </header>
 
   <main id="contenido">
+    <div class="module-actions" aria-label="Acciones de navegacion">
+      <button type="button" class="btn btn-outline" onclick="if (window.history.length > 1) { window.history.back(); } else { window.location.href='dashboard.php'; }">&larr; Volver</button>
+    </div>
+
     <section class="notice-banner" aria-label="Acceso administrativo">
       <strong>Modulo CRUD de inmuebles o propiedades.</strong>
       <p>Sesion activa como: <?php echo htmlspecialchars($_SESSION['nombre']); ?> (<?php echo htmlspecialchars($_SESSION['rol']); ?>)</p>
@@ -72,7 +76,7 @@
       </article>
       <article class="stat-card content-card">
         <span class="badge">Busqueda</span>
-        <h2>AJAX</h2>
+        <h2>Busqueda dinamica</h2>
         <p>Busqueda por provincia, comuna y sector conectada al formulario</p>
       </article>
     </section>
@@ -305,3 +309,4 @@
   <script src="js/admin-propiedades.js"></script>
 </body>
 </html>
+

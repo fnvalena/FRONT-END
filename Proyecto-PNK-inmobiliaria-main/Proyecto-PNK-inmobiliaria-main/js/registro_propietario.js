@@ -253,7 +253,15 @@ document.addEventListener('DOMContentLoaded', function () {
       method: 'POST',
       body: new FormData(form)
     })
-      .then(function (r) { return r.json(); })
+      .then(function (r) {
+        return r.text().then(function (texto) {
+          try {
+            return JSON.parse(texto);
+          } catch (error) {
+            throw new Error(texto.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() || 'Respuesta no valida del servidor.');
+          }
+        });
+      })
       .then(function (data) {
         if (data.ok) {
           Swal.fire({
@@ -276,11 +284,11 @@ document.addEventListener('DOMContentLoaded', function () {
           });
         }
       })
-      .catch(function () {
+      .catch(function (error) {
         Swal.fire({
           icon: 'error',
-          title: 'Error de conexión',
-          text: 'No fue posible conectar con el servidor. Intenta nuevamente.',
+          title: 'Error del servidor',
+          text: error.message || 'No fue posible conectar con el servidor. Intenta nuevamente.',
           confirmButtonText: 'Cerrar'
         });
       });

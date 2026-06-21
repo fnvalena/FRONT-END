@@ -27,7 +27,7 @@
           <li><a href="buscador-propiedad.html">Buscar</a></li>
           <li><a href="publicar-propiedad.html">Publicar</a></li>
           <li><a href="quienes-somos.html">Quienes Somos</a></li>
-          <li><a href="administracion.php">Dashboard</a></li>
+          <li><a href="dashboard.php">Dashboard</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
@@ -40,6 +40,10 @@
   </header>
 
   <main id="contenido">
+    <div class="module-actions" aria-label="Acciones de navegacion">
+      <button type="button" class="btn btn-outline" onclick="if (window.history.length > 1) { window.history.back(); } else { window.location.href='dashboard.php'; }">&larr; Volver</button>
+    </div>
+
     <section class="section form-card">
       <form id="formBusquedaAjax" action="buscar_propiedades.php" method="get">
         <div class="form-grid">
@@ -100,12 +104,12 @@
           <p class="eyebrow">Filtro activo</p>
           <h2>Resultados de busqueda</h2>
         </div>
-        <p>Los resultados se cargan desde MySQL usando AJAX. Al seleccionar una propiedad se abre el formulario CRUD para editar sus datos.</p>
+        <p>Los resultados se cargan desde la base de datos. Al seleccionar una propiedad, el administrador puede abrir el formulario CRUD para editar sus datos.</p>
       </div>
 
       <div class="grid grid-2" id="resultados-ajax">
         <article class="content-card">
-          <span class="badge">AJAX</span>
+          <span class="badge">Busqueda dinamica</span>
           <h3>Usa el formulario para buscar</h3>
           <p>Los resultados apareceran aqui con datos cargados desde MySQL.</p>
         </article>
@@ -123,3 +127,4 @@
   <script src="js/buscar-propiedades.js"></script>
 </body>
 </html>
+
