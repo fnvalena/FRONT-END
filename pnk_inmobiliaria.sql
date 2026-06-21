@@ -98,8 +98,12 @@ CREATE TABLE IF NOT EXISTS `propiedades` (
   `antejardin` int NOT NULL DEFAULT '0',
   `patio_trasero` int NOT NULL DEFAULT '0',
   `piscina` int NOT NULL DEFAULT '0',
+  `id_gestor` int DEFAULT NULL,
+  `estado_gestion` enum('sin_asignar','asignada','en_gestion','publicada','pausada') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'sin_asignar',
+  `fecha_asignacion` datetime DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idx_gestor_propiedad` (`id_gestor`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -142,13 +146,16 @@ CREATE TABLE IF NOT EXISTS `solicitudes_visita` (
   `correo_interesado` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telefono_interesado` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mensaje` text COLLATE utf8mb4_unicode_ci,
-  `estado` enum('pendiente','contactado','coordinada','cerrada','rechazada') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pendiente',
+  `estado` enum('pendiente','asignada','contactado','coordinada','cerrada','rechazada') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pendiente',
+  `id_gestor` int DEFAULT NULL,
+  `fecha_asignacion` datetime DEFAULT NULL,
   `fecha_solicitud` datetime DEFAULT CURRENT_TIMESTAMP,
   `fecha_actualizacion` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_estado` (`estado`),
   KEY `idx_correo_interesado` (`correo_interesado`),
-  KEY `idx_propiedad` (`id_propiedad`)
+  KEY `idx_propiedad` (`id_propiedad`),
+  KEY `idx_gestor_solicitud` (`id_gestor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------

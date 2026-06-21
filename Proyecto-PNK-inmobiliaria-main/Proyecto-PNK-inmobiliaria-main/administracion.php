@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Administracion - PNK Inmobiliaria</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=8">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -168,13 +168,14 @@
               <th>Contacto</th>
               <th>Mensaje</th>
               <th>Fecha</th>
+              <th>Gestor</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="tabla-solicitudes-visita">
             <tr>
-              <td colspan="7">Cargando solicitudes de visita...</td>
+              <td colspan="8">Cargando solicitudes de visita...</td>
             </tr>
           </tbody>
         </table>
@@ -357,12 +358,13 @@
               <th>Dormitorios</th>
               <th>Area total</th>
               <th>Precio</th>
+              <th>Gestor</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="tabla-propiedades">
             <tr>
-              <td colspan="8">Cargando propiedades...</td>
+              <td colspan="9">Cargando propiedades...</td>
             </tr>
           </tbody>
         </table>
@@ -370,11 +372,33 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+    <footer class="site-footer">
+    <div class="footer-inner">
+      <section class="footer-brand-block">
+        <span class="brand-mark footer-logo">PNK</span>
+        <h2>PNK Inmobiliaria</h2>
+        <p>Plataforma web para publicar, buscar y gestionar propiedades en la Region de Coquimbo.</p>
+      </section>
+      <section>
+        <h2>Contacto</h2>
+        <p>La Serena, Region de Coquimbo</p>
+        <p>+56 9 4411 6374</p>
+        <p>contacto@pnkinmobiliaria.cl</p>
+      </section>
+      <section>
+        <h2>Accesos rapidos</h2>
+        <ul>
+          <li><a href="buscador-propiedad.html">Buscar propiedad</a></li>
+          <li><a href="publicar-propiedad.html">Publicar propiedad</a></li>
+          <li><a href="registro-gestor.html">Ser gestor inmobiliario</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </section>
+    </div>
     <p class="copyright">&copy; 2026 PNK Inmobiliaria - Todos los derechos reservados</p>
   </footer>
 
-  <script src="js/admin-propiedades.js?v=3"></script>
+  <script src="js/admin-propiedades.js?v=4"></script>
 </body>
 </html>
 

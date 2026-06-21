@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const inputAccion = document.getElementById('accion');
   const inputId = document.getElementById('id');
   const btnLimpiar = document.getElementById('btn-limpiar');
+  let gestoresAprobados = [];
 
   function formatoCLP(valor) {
     return '$' + Number(valor || 0).toLocaleString('es-CL');
@@ -34,6 +35,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  function opcionesGestores(idSeleccionado) {
+    const seleccionado = String(idSeleccionado || '');
+    let opciones = '<option value="">Sin gestor</option>';
+
+    opciones += gestoresAprobados.map(function (gestor) {
+      return '<option value="' + gestor.id + '"' + (String(gestor.id) === seleccionado ? ' selected' : '') + '>' +
+        escapeHtml(gestor.nombre) +
+      '</option>';
+    }).join('');
+
+    return opciones;
+  }
+
   function resetFormulario() {
     form.reset();
     inputId.value = '';
@@ -46,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
     totalPropiedades.textContent = propiedades.length;
 
     if (propiedades.length === 0) {
-      tabla.innerHTML = '<tr><td colspan="8">No hay propiedades registradas.</td></tr>';
+      tabla.innerHTML = '<tr><td colspan="9">No hay propiedades registradas.</td></tr>';
       return;
     }
 
@@ -63,6 +77,12 @@ document.addEventListener('DOMContentLoaded', function () {
         '<td>' + escapeHtml(propiedad.dormitorios) + '</td>' +
         '<td>' + escapeHtml(propiedad.area_total) + ' m2</td>' +
         '<td>' + formatoCLP(propiedad.precio_clp) + '</td>' +
+        '<td>' +
+          '<select data-asignar-propiedad="' + propiedad.id + '">' +
+            opcionesGestores(propiedad.id_gestor) +
+          '</select>' +
+          '<small class="form-note">' + escapeHtml(propiedad.estado_gestion || 'sin_asignar') + '</small>' +
+        '</td>' +
         '<td><div class="table-actions">' +
           '<button type="button" class="btn-outline" data-editar="' + propiedad.id + '">Editar</button>' +
           '<button type="button" data-eliminar="' + propiedad.id + '">Eliminar</button>' +
@@ -152,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!tablaSolicitudes) return;
 
     if (solicitudes.length === 0) {
-      tablaSolicitudes.innerHTML = '<tr><td colspan="7">No hay solicitudes de visita registradas.</td></tr>';
+      tablaSolicitudes.innerHTML = '<tr><td colspan="8">No hay solicitudes de visita registradas.</td></tr>';
       return;
     }
 
@@ -167,8 +187,15 @@ document.addEventListener('DOMContentLoaded', function () {
         '<td>' + escapeHtml(solicitud.correo_interesado) + '<br>' + escapeHtml(solicitud.telefono_interesado) + '</td>' +
         '<td>' + escapeHtml(solicitud.mensaje || 'Sin mensaje').slice(0, 90) + '</td>' +
         '<td>' + escapeHtml(solicitud.fecha_solicitud) + '</td>' +
+        '<td>' +
+          '<select data-asignar-solicitud="' + solicitud.id + '">' +
+            opcionesGestores(solicitud.id_gestor) +
+          '</select>' +
+          '<small class="form-note">' + escapeHtml(solicitud.gestor_nombre || 'No derivada') + '</small>' +
+        '</td>' +
         '<td><select data-estado-solicitud="' + solicitud.id + '">' +
           '<option value="pendiente"' + (solicitud.estado === 'pendiente' ? ' selected' : '') + '>Pendiente</option>' +
+          '<option value="asignada"' + (solicitud.estado === 'asignada' ? ' selected' : '') + '>Asignada</option>' +
           '<option value="contactado"' + (solicitud.estado === 'contactado' ? ' selected' : '') + '>Contactado</option>' +
           '<option value="coordinada"' + (solicitud.estado === 'coordinada' ? ' selected' : '') + '>Coordinada</option>' +
           '<option value="cerrada"' + (solicitud.estado === 'cerrada' ? ' selected' : '') + '>Cerrada</option>' +
@@ -208,7 +235,12 @@ document.addEventListener('DOMContentLoaded', function () {
           return;
         }
 
+        gestoresAprobados = (data.gestores || []).filter(function (gestor) {
+          return gestor.estado === 'aprobado';
+        });
         renderGestores(data.gestores || []);
+        cargarPropiedades();
+        cargarSolicitudesVisita();
       })
       .catch(function () {
         mostrarError('No fue posible cargar los gestores registrados.');
@@ -340,6 +372,40 @@ document.addEventListener('DOMContentLoaded', function () {
           mostrarError('No fue posible eliminar la propiedad.');
         });
     });
+  }
+
+  function asignarGestorPropiedad(idPropiedad, idGestor) {
+    const datos = new FormData();
+    datos.append('accion', 'asignar_gestor');
+    datos.append('id', idPropiedad);
+    datos.append('id_gestor', idGestor || '');
+
+    fetch('propiedades_api.php', {
+      method: 'POST',
+      body: datos
+    })
+      .then(function (respuesta) { return respuesta.json(); })
+      .then(function (data) {
+        if (!data.ok) {
+          mostrarError(data.mensaje);
+          cargarPropiedades();
+          return;
+        }
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Gestor asignado',
+          text: data.mensaje,
+          timer: 1400,
+          showConfirmButton: false
+        });
+
+        cargarPropiedades();
+      })
+      .catch(function () {
+        mostrarError('No fue posible asignar el gestor.');
+        cargarPropiedades();
+      });
   }
 
   function activarPropietario(id) {
@@ -548,6 +614,40 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 
+  function asignarGestorSolicitud(idSolicitud, idGestor) {
+    const datos = new FormData();
+    datos.append('accion', 'asignar_gestor');
+    datos.append('id', idSolicitud);
+    datos.append('id_gestor', idGestor || '');
+
+    fetch('solicitudes_visita_api.php', {
+      method: 'POST',
+      body: datos
+    })
+      .then(function (respuesta) { return respuesta.json(); })
+      .then(function (data) {
+        if (!data.ok) {
+          mostrarError(data.mensaje);
+          cargarSolicitudesVisita();
+          return;
+        }
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Solicitud derivada',
+          text: data.mensaje,
+          timer: 1400,
+          showConfirmButton: false
+        });
+
+        cargarSolicitudesVisita();
+      })
+      .catch(function () {
+        mostrarError('No fue posible derivar la solicitud.');
+        cargarSolicitudesVisita();
+      });
+  }
+
   function eliminarSolicitud(id) {
     Swal.fire({
       icon: 'warning',
@@ -638,6 +738,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  tabla.addEventListener('change', function (evento) {
+    const selectorGestor = evento.target.closest('[data-asignar-propiedad]');
+
+    if (selectorGestor) {
+      asignarGestorPropiedad(selectorGestor.dataset.asignarPropiedad, selectorGestor.value);
+    }
+  });
+
   tablaPropietarios.addEventListener('click', function (evento) {
     const botonActivar = evento.target.closest('[data-activar-propietario]');
     const botonEliminar = evento.target.closest('[data-eliminar-propietario]');
@@ -673,6 +781,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (selector) {
         actualizarEstadoSolicitud(selector.dataset.estadoSolicitud, selector.value);
       }
+
+      const selectorGestor = evento.target.closest('[data-asignar-solicitud]');
+
+      if (selectorGestor) {
+        asignarGestorSolicitud(selectorGestor.dataset.asignarSolicitud, selectorGestor.value);
+      }
     });
 
     tablaSolicitudes.addEventListener('click', function (evento) {
@@ -689,10 +803,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const parametros = new URLSearchParams(window.location.search);
   const idEditar = parametros.get('editar');
 
-  cargarPropiedades();
   cargarPropietariosPendientes();
   cargarGestores();
-  cargarSolicitudesVisita();
 
   if (idEditar) {
     editarPropiedad(idEditar);
