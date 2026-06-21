@@ -33,7 +33,17 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function correoValido(correo) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+    const cantidadArroba = (correo.match(/@/g) || []).length;
+    if (cantidadArroba !== 1) return false;
+
+    const partes = correo.split('@');
+    const parteLocal = partes[0];
+    const parteDominio = partes[1];
+
+    if (parteLocal.length < 3) return false;
+    if (!parteDominio || parteDominio.indexOf('.') === -1) return false;
+
+    return true;
   }
 
   function telefonoValido(telefono) {
@@ -101,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   restringirCampo(inputTelefono, /[0-9]/, function () {
-    const limpio = this.value.replace(/[^0-9]/g, '').slice(0, 9);
+    const limpio = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]/g, '');
     if (this.value !== limpio) this.value = limpio;
     limpiarError('telefono');
   });
@@ -110,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const reEspecial = /[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?]/;
 
   function passwordValido(pass) {
-    return pass.length >= 8 && /[A-Z]/.test(pass) && /[0-9]/.test(pass) && reEspecial.test(pass);
+    return pass.length >= 8 && /[A-Z]/.test(pass) && /[a-z]/.test(pass) && reEspecial.test(pass);
   }
 
   inputPassword.addEventListener('input', function () {
@@ -119,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const fallas = [];
     if (pass.length < 8)          fallas.push('mínimo 8 caracteres');
     if (!/[A-Z]/.test(pass))      fallas.push('una mayúscula');
-    if (!/[0-9]/.test(pass))      fallas.push('un número');
+    if (!/[a-z]/.test(pass))      fallas.push('una minúscula');
     if (!reEspecial.test(pass))   fallas.push('un carácter especial (!@#$%...)');
     if (fallas.length > 0) {
       mostrarError('password', 'Falta: ' + fallas.join(', ') + '.');
@@ -184,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (password !== '' && !passwordValido(password)) {
-      mostrarError('password', 'La contraseña debe tener mínimo 8 caracteres, una mayúscula, un número y un carácter especial.');
+      mostrarError('password', 'La contraseña debe tener mínimo 8 caracteres, una mayúscula, una minúscula y un carácter especial.');
       errores.push('La contraseña no cumple el formato requerido.');
     }
 
@@ -274,3 +284,4 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 });
+

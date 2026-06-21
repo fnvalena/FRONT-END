@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', function () {
       const foto = propiedad.foto
         ? '<img src="' + escapeHtml(propiedad.foto) + '" alt="Foto de propiedad">'
         : '';
+      const titulo = propiedad.tipo + ' en ' + propiedad.comuna + ', ' + propiedad.sector;
+      const urlVisita = 'solicitar_visita.php?id=' + encodeURIComponent(propiedad.id) +
+        '&codigo=ID%20' + encodeURIComponent(propiedad.id) +
+        '&titulo=' + encodeURIComponent(titulo);
 
       return '<article class="property-card">' +
         foto +
@@ -40,7 +44,10 @@ document.addEventListener('DOMContentLoaded', function () {
             '<li>' + escapeHtml(propiedad.area_total) + ' m2 totales</li>' +
           '</ul>' +
           '<p>' + escapeHtml(propiedad.descripcion).slice(0, 120) + '</p>' +
-          '<a class="btn btn-outline" href="administracion.php?editar=' + encodeURIComponent(propiedad.id) + '#crud-propiedades">Editar en CRUD</a>' +
+          '<div class="hero-actions">' +
+            '<a class="btn" href="' + urlVisita + '">Solicitar visita</a>' +
+            '<a class="btn btn-outline" href="administracion.php?editar=' + encodeURIComponent(propiedad.id) + '#crud-propiedades">Editar en CRUD</a>' +
+          '</div>' +
         '</div>' +
       '</article>';
     }).join('');

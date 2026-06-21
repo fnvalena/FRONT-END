@@ -31,7 +31,17 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function correoValido(correo) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+    const cantidadArroba = (correo.match(/@/g) || []).length;
+    if (cantidadArroba !== 1) return false;
+
+    const partes = correo.split('@');
+    const parteLocal = partes[0];
+    const parteDominio = partes[1];
+
+    if (parteLocal.length < 3) return false;
+    if (!parteDominio || parteDominio.indexOf('.') === -1) return false;
+
+    return true;
   }
 
   function telefonoValido(telefono) {

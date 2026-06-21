@@ -12,6 +12,7 @@ $propietario = [
     'estado' => 'activo',
     'fecha_registro' => ''
 ];
+$solicitudesVisita = [];
 
 if ($idPropietario > 0) {
     $stmt = $conexion->prepare(
@@ -28,6 +29,45 @@ if ($idPropietario > 0) {
     }
 
     $stmt->close();
+}
+
+$conexion->query(
+    "CREATE TABLE IF NOT EXISTS solicitudes_visita (
+        id INT NOT NULL AUTO_INCREMENT,
+        id_propiedad INT NULL,
+        codigo_propiedad VARCHAR(30) NULL,
+        titulo_propiedad VARCHAR(180) NOT NULL,
+        nombre_interesado VARCHAR(150) NOT NULL,
+        correo_interesado VARCHAR(150) NOT NULL,
+        telefono_interesado VARCHAR(20) NOT NULL,
+        mensaje TEXT NULL,
+        estado ENUM('pendiente','contactado','coordinada','cerrada','rechazada') NOT NULL DEFAULT 'pendiente',
+        fecha_solicitud DATETIME DEFAULT CURRENT_TIMESTAMP,
+        fecha_actualizacion DATETIME NULL,
+        PRIMARY KEY (id),
+        KEY idx_estado (estado),
+        KEY idx_correo_interesado (correo_interesado),
+        KEY idx_propiedad (id_propiedad)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+);
+
+if (!empty($propietario['correo'])) {
+    $stmtSolicitudes = $conexion->prepare(
+        "SELECT codigo_propiedad, titulo_propiedad, estado, fecha_solicitud
+         FROM solicitudes_visita
+         WHERE correo_interesado = ?
+         ORDER BY fecha_solicitud DESC
+         LIMIT 5"
+    );
+    $stmtSolicitudes->bind_param('s', $propietario['correo']);
+    $stmtSolicitudes->execute();
+    $resultadoSolicitudes = $stmtSolicitudes->get_result();
+
+    while ($filaSolicitud = $resultadoSolicitudes->fetch_assoc()) {
+        $solicitudesVisita[] = $filaSolicitud;
+    }
+
+    $stmtSolicitudes->close();
 }
 
 $conexion->close();
@@ -138,6 +178,23 @@ $conexion->close();
         <span class="badge">Guardados</span>
         <h2>Propiedades guardadas</h2>
         <p>Aun no hay propiedades guardadas. Este modulo puede conectarse luego a favoritos o solicitudes de visita.</p>
+      </article>
+      <article class="content-card">
+        <span class="badge">Visitas</span>
+        <h2>Solicitudes de visita</h2>
+        <?php if (empty($solicitudesVisita)): ?>
+          <p>Aun no hay solicitudes de visita asociadas a tu correo. Cuando solicites una visita, el administrador gestionara el estado.</p>
+        <?php else: ?>
+          <ul class="feature-list">
+            <?php foreach ($solicitudesVisita as $solicitud): ?>
+              <li>
+                <strong><?php echo htmlspecialchars($solicitud['codigo_propiedad'] ?: 'Propiedad'); ?>:</strong>
+                <?php echo htmlspecialchars($solicitud['titulo_propiedad']); ?>
+                <span class="badge"><?php echo htmlspecialchars($solicitud['estado']); ?></span>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        <?php endif; ?>
       </article>
       <article class="content-card">
         <span class="badge">Busquedas</span>

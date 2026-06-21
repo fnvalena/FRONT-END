@@ -75,6 +75,11 @@
         <p>Propietarios pendientes dentro del registro general</p>
       </article>
       <article class="stat-card content-card">
+        <span class="badge">Gestores</span>
+        <h2 id="total-gestores-pendientes">0</h2>
+        <p>Postulaciones de gestores pendientes de revision</p>
+      </article>
+      <article class="stat-card content-card">
         <span class="badge">Busqueda</span>
         <h2>Busqueda dinamica</h2>
         <p>Busqueda por provincia, comuna y sector conectada al formulario</p>
@@ -107,6 +112,69 @@
           <tbody id="tabla-propietarios-pendientes">
             <tr>
               <td colspan="8">Cargando propietarios registrados...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section form-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Postulaciones</p>
+          <h2>Gestores inmobiliarios</h2>
+        </div>
+        <p>El administrador revisa certificados, aprueba, rechaza o elimina postulaciones de gestores.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>RUT</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Telefono</th>
+              <th>Certificado</th>
+              <th>Fecha postulacion</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-gestores">
+            <tr>
+              <td colspan="8">Cargando gestores registrados...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section form-card" id="solicitudes-visita">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Trazabilidad</p>
+          <h2>Solicitudes de visita</h2>
+        </div>
+        <p>El administrador recibe, revisa y coordina las visitas antes de contactar al propietario o gestor.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Propiedad</th>
+              <th>Interesado</th>
+              <th>Contacto</th>
+              <th>Mensaje</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-solicitudes-visita">
+            <tr>
+              <td colspan="7">Cargando solicitudes de visita...</td>
             </tr>
           </tbody>
         </table>
@@ -306,7 +374,7 @@
     <p class="copyright">&copy; 2026 PNK Inmobiliaria - Todos los derechos reservados</p>
   </footer>
 
-  <script src="js/admin-propiedades.js"></script>
+  <script src="js/admin-propiedades.js?v=3"></script>
 </body>
 </html>
 

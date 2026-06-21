@@ -45,6 +45,15 @@
           <div>
             <label for="password">Contraseña</label>
             <input type="password" id="password" name="password" required>
+            <div class="password-help" aria-label="Requisitos de contraseña">
+              <strong>La contraseña debe incluir:</strong>
+              <ul>
+                <li>Mínimo 8 caracteres.</li>
+                <li>Al menos una letra mayúscula.</li>
+                <li>Al menos una letra minúscula.</li>
+                <li>Al menos un carácter especial, por ejemplo: !, @, #, $, %.</li>
+              </ul>
+            </div>
             <small class="form-error" id="error-password"></small>
           </div>
           <div>

@@ -129,6 +129,31 @@ CREATE TABLE IF NOT EXISTS `propietarios` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `solicitudes_visita`
+--
+
+DROP TABLE IF EXISTS `solicitudes_visita`;
+CREATE TABLE IF NOT EXISTS `solicitudes_visita` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `id_propiedad` int DEFAULT NULL,
+  `codigo_propiedad` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `titulo_propiedad` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nombre_interesado` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `correo_interesado` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telefono_interesado` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mensaje` text COLLATE utf8mb4_unicode_ci,
+  `estado` enum('pendiente','contactado','coordinada','cerrada','rechazada') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pendiente',
+  `fecha_solicitud` datetime DEFAULT CURRENT_TIMESTAMP,
+  `fecha_actualizacion` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_estado` (`estado`),
+  KEY `idx_correo_interesado` (`correo_interesado`),
+  KEY `idx_propiedad` (`id_propiedad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 

@@ -837,7 +837,7 @@ body.homepage:has(#tipo-rapido option[value="Terreno"]:checked):has(#comuna-rapi
   box-shadow: 0 4px 12px rgba(0,0,0,.2);
 }
 
-/* Columna derecha: información */
+/* Columna derecha: informaciÃ³n */
 .gallery-side {
   display: grid;
   gap: 1rem;
@@ -871,7 +871,7 @@ body.homepage:has(#tipo-rapido option[value="Terreno"]:checked):has(#comuna-rapi
   font-size: 0.9rem;
 }
 
-/* Descripción debajo de las miniaturas */
+/* DescripciÃ³n debajo de las miniaturas */
 .description-box {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -925,7 +925,7 @@ body.homepage .property-card {
   display: block;
 }
 
-/* Mantener compatibilidad con filtros rápidos */
+/* Mantener compatibilidad con filtros rÃ¡pidos */
 body.homepage:has(#tipo-rapido option[value="Casa"]:checked) .property-card.filter-casa,
 body.homepage:has(#tipo-rapido option[value="Departamento"]:checked) .property-card.filter-departamento,
 body.homepage:has(#tipo-rapido option[value="Terreno"]:checked) .property-card.filter-terreno,
@@ -954,7 +954,7 @@ body.homepage:has(#comuna-rapida option[value="Ovalle"]:checked) .property-card.
   min-height: 1.1em;
 }
 
-/* Inputs numéricos dentro de características adicionales */
+/* Inputs numÃ©ricos dentro de caracterÃ­sticas adicionales */
 .checks .check-row input[type="number"] {
   width: 100%;
   min-width: 80px;
@@ -971,4 +971,144 @@ body.homepage:has(#comuna-rapida option[value="Ovalle"]:checked) .property-card.
 .checks .check-row label {
   flex: 1 1 auto;
   margin-bottom: 0;
+}
+
+.gallery-clickable {
+  cursor: zoom-in;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(18, 18, 18, .94);
+}
+
+.gallery-lightbox.is-open {
+  display: flex;
+}
+
+.gallery-lightbox[hidden] {
+  display: none !important;
+}
+
+.gallery-lightbox__dialog {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+  justify-items: center;
+  width: min(1180px, 100%);
+  min-height: 88vh;
+  text-align: center;
+}
+
+.gallery-lightbox__image {
+  max-width: 100%;
+  max-height: 78vh;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: #111;
+  object-fit: contain;
+}
+
+.gallery-lightbox__caption {
+  align-self: start;
+  margin: 0 auto 1rem;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.gallery-lightbox__close,
+.gallery-lightbox__nav {
+  position: absolute;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+
+.gallery-lightbox__close {
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.gallery-lightbox__nav {
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  font-size: 2.4rem;
+  transform: translateY(-50%);
+}
+
+.gallery-lightbox__prev {
+  left: 0;
+}
+
+.gallery-lightbox__next {
+  right: 0;
+}
+
+@media (max-width: 760px) {
+  .gallery-lightbox {
+    padding: 1rem;
+  }
+
+  .gallery-lightbox__close {
+    top: .5rem;
+    right: .5rem;
+  }
+
+  .gallery-lightbox__prev {
+    left: .5rem;
+  }
+
+  .gallery-lightbox__next {
+    right: .5rem;
+  }
+}
+
+.password-help {
+  margin-top: .55rem;
+  padding: .75rem .9rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.password-help strong {
+  display: block;
+  margin-bottom: .35rem;
+  color: var(--text);
+}
+
+.password-help ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.password-help li + li {
+  margin-top: .2rem;
 }
