@@ -10,6 +10,41 @@ function responder($ok, $mensaje = '', $datos = [])
     exit;
 }
 
+function columna_existe($conexion, $tabla, $columna)
+{
+    $stmt = $conexion->prepare(
+        "SELECT COUNT(*) AS total
+         FROM INFORMATION_SCHEMA.COLUMNS
+         WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? AND COLUMN_NAME = ?"
+    );
+    $stmt->bind_param('ss', $tabla, $columna);
+    $stmt->execute();
+    $resultado = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+    return (int)($resultado['total'] ?? 0) > 0;
+}
+
+function asegurar_trazabilidad_propiedades($conexion)
+{
+    if (!columna_existe($conexion, 'propiedades', 'id_gestor')) {
+        $conexion->query("ALTER TABLE propiedades ADD id_gestor INT NULL AFTER piscina");
+    }
+
+    if (!columna_existe($conexion, 'propiedades', 'estado_gestion')) {
+        $conexion->query(
+            "ALTER TABLE propiedades
+             ADD estado_gestion ENUM('sin_asignar','asignada','en_gestion','publicada','pausada')
+             NOT NULL DEFAULT 'sin_asignar' AFTER id_gestor"
+        );
+    }
+
+    if (!columna_existe($conexion, 'propiedades', 'fecha_asignacion')) {
+        $conexion->query("ALTER TABLE propiedades ADD fecha_asignacion DATETIME NULL AFTER estado_gestion");
+    }
+}
+
+asegurar_trazabilidad_propiedades($conexion);
+
 function propiedad_desde_post()
 {
     return [
@@ -103,9 +138,11 @@ function guardar_fotos($conexion, $idPropiedad)
 
 function listar_propiedades($conexion)
 {
-    $sql = "SELECT p.*, g.ruta_imagen AS foto
+    $sql = "SELECT p.*, g.ruta_imagen AS foto,
+                   ge.nombre AS gestor_nombre, ge.correo AS gestor_correo
             FROM propiedades p
             LEFT JOIN galeria_propiedad g ON g.id_propiedad = p.id AND g.es_principal = 1
+            LEFT JOIN gestores ge ON ge.id = p.id_gestor
             ORDER BY p.id DESC";
 
     $resultado = $conexion->query($sql);
@@ -225,6 +262,53 @@ function eliminar_propiedad($conexion)
     responder(true, 'Propiedad eliminada correctamente.');
 }
 
+function asignar_gestor_propiedad($conexion)
+{
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        http_response_code(405);
+        responder(false, 'Metodo no permitido.');
+    }
+
+    $idPropiedad = (int)($_POST['id'] ?? 0);
+    $idGestor = (int)($_POST['id_gestor'] ?? 0);
+
+    if ($idPropiedad <= 0) {
+        responder(false, 'ID de propiedad invalido.');
+    }
+
+    if ($idGestor <= 0) {
+        $stmt = $conexion->prepare(
+            "UPDATE propiedades
+             SET id_gestor = NULL, estado_gestion = 'sin_asignar', fecha_asignacion = NULL
+             WHERE id = ?"
+        );
+        $stmt->bind_param('i', $idPropiedad);
+    } else {
+        $stmtGestor = $conexion->prepare("SELECT id FROM gestores WHERE id = ? AND estado = 'aprobado'");
+        $stmtGestor->bind_param('i', $idGestor);
+        $stmtGestor->execute();
+        $resultadoGestor = $stmtGestor->get_result();
+        $stmtGestor->close();
+
+        if ($resultadoGestor->num_rows === 0) {
+            responder(false, 'El gestor seleccionado no esta aprobado.');
+        }
+
+        $stmt = $conexion->prepare(
+            "UPDATE propiedades
+             SET id_gestor = ?, estado_gestion = 'asignada', fecha_asignacion = NOW()
+             WHERE id = ?"
+        );
+        $stmt->bind_param('ii', $idGestor, $idPropiedad);
+    }
+
+    if (!$stmt->execute()) {
+        responder(false, 'No se pudo asignar el gestor a la propiedad.');
+    }
+
+    responder(true, 'Asignacion de propiedad actualizada.');
+}
+
 $accion = $_GET['accion'] ?? $_POST['accion'] ?? 'listar';
 
 switch ($accion) {
@@ -242,6 +326,9 @@ switch ($accion) {
         break;
     case 'eliminar':
         eliminar_propiedad($conexion);
+        break;
+    case 'asignar_gestor':
+        asignar_gestor_propiedad($conexion);
         break;
     default:
         responder(false, 'Accion no reconocida.');

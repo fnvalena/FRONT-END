@@ -13,5 +13,10 @@ if ($rol === 'propietario') {
     exit;
 }
 
+if ($rol === 'gestor') {
+    header('Location: panel_gestor.php');
+    exit;
+}
+
 header('Location: error_sesion.html');
 exit;
