@@ -92,3 +92,101 @@ Depuración de duplicados
 
 Galería de propiedades  
 “Define una galería de fotos para las propiedades con foto principal, miniaturas debajo y caja de descripción al costado, mejorando la presentación visual.”
+
+------------------------------------------------------ Prompts backend, paneles, base de datos y AWS ----------------------------------------------------------------------------------------
+
+Validación de contraseña robusta
+“Implementa validación en JavaScript para que las contraseñas de login y registros cumplan mínimo 8 caracteres, una mayúscula, una minúscula y un carácter especial. Agrega mensajes visibles y claros para orientar al usuario antes de enviar el formulario.”
+
+Validación de correo electrónico
+“Implementa una función JavaScript para validar el correo electrónico considerando solo un símbolo @, mínimo 3 caracteres antes del @ y al menos un punto después del @. Aplica esta validación en login, registro de propietario y registro de gestor.”
+
+Hash de contraseñas con PHP
+“Actualiza los procesos de registro para que la contraseña no se almacene en texto plano. Usa password_hash con PASSWORD_BCRYPT al insertar propietarios, gestores y usuarios administradores en la base de datos.”
+
+Verificación de contraseña en login
+“Modifica el login PHP para consultar la base de datos por correo, recuperar el hash de contraseña y validar usando password_verify. El sistema debe responder con mensajes claros si el correo no existe, la contraseña no coincide o la cuenta no está activa.”
+
+Sesiones PHP
+“Al iniciar sesión correctamente, crea variables de sesión con session_start y $_SESSION para id, nombre, correo, rol y estado activo. Usa estas variables para mantener sesión en páginas protegidas.”
+
+Protección de páginas privadas
+“Crea archivos de verificación de sesión para restringir el acceso a páginas privadas. Si no existe sesión activa, redirige a error_sesion.html. Agrega verificaciones específicas para administrador, propietario y gestor.”
+
+Cierre de sesión
+“Crea la funcionalidad de cerrar sesión destruyendo la sesión con session_destroy y redirigiendo al login con un mensaje de salida exitosa.”
+
+Panel administrador
+“Mejora administracion.php para que funcione como panel real de administración. Debe listar propietarios registrados, permitir activar cuentas pendientes, eliminar cuentas, listar gestores postulantes, aprobar o rechazar gestores y mantener una vista clara de acciones administrativas.”
+
+Separación de roles
+“Corrige el flujo de acceso para que usuarios propietarios y gestores no puedan ingresar al panel administrador. El dashboard debe redirigir según rol: administrador a administracion.php, propietario a panel_propietario.php y gestor a panel_gestor.php.”
+
+Panel propietario
+“Crea o mejora el panel de propietario para mostrar el estado de cuenta, datos personales, número de propiedad, accesos rápidos, intereses, propiedades guardadas, búsquedas recientes y propiedades publicadas. Mantén la visual limpia y consistente con el sitio.”
+
+Listado de usuarios validados
+“En el panel administrador, agrega un registro completo de propietarios pendientes y activos. El administrador debe poder ver usuarios validados y eliminarlos posteriormente por limpieza, solicitud del usuario o falta de uso.”
+
+Panel gestor
+“Desarrolla un panel para gestores inmobiliarios aprobados. Debe mostrar propiedades asignadas, solicitudes de visita asignadas, estado de gestión y acciones para actualizar el avance de cada solicitud.”
+
+Trazabilidad de visitas
+“Implementa la trazabilidad de solicitudes de visita. Cuando un visitante solicita una visita, la solicitud debe guardarse en la base de datos, quedar visible para el administrador y poder ser asignada a un gestor inmobiliario.”
+
+Asignación de gestor
+“Desde el panel administrador, permite asignar una propiedad o solicitud de visita a un gestor aprobado. La asignación debe quedar guardada en la base de datos con id del gestor, estado de gestión y fecha de asignación.”
+
+Actualización de estado por gestor
+“Permite que el gestor actualice el estado de las solicitudes asignadas, por ejemplo pendiente, contactado, coordinada, cerrada o rechazada, para mantener trazabilidad del proceso.”
+
+Solicitud de visita con confirmación
+“Corrige el flujo de solicitar visita para que al enviar el formulario no redirija sin contexto. Debe mostrar un mensaje de éxito o error y registrar la solicitud en la base de datos.”
+
+Carrusel de imágenes en detalle
+“Mejora la visualización de imágenes de detalle de propiedad. Al presionar la imagen principal o una miniatura, debe abrirse un modal tipo carrusel sobre la pantalla, con botones anterior, siguiente, contador y cierre, sin agregar el carrusel al final de la página.”
+
+Botón volver
+“Agrega un botón Volver en los módulos internos para mejorar la experiencia de usuario. Debe ubicarse de forma consistente, visible y sin depender del botón volver del navegador.”
+
+Corrección de textos con acentos
+“Revisa todas las páginas HTML, PHP, JS y CSS para corregir problemas de codificación como Contáctanos, Atención, Contraseña y ¿Olvidaste tu contraseña?. Asegura UTF-8 en los documentos y textos visibles.”
+
+Footer global
+“Unifica el footer en todas las ventanas del proyecto. Debe incluir logo PNK más visible, nombre de la inmobiliaria, descripción breve, contacto, dirección, teléfono, correo y accesos rápidos. El footer debe ocupar el ancho completo y no dejar espacios blancos al final de la página.”
+
+Responsive y experiencia visual
+“Ajusta estilos globales para que las páginas mantengan buena proporción visual, tarjetas ordenadas, botones consistentes, footer pegado al final y comportamiento responsive sin cambiar la paleta, imágenes o identidad visual del proyecto.”
+
+Listado completo de propiedades en admin
+“Carga en la base de datos las propiedades base que estaban visibles en HTML estático para que el panel administrador liste todas las propiedades y no solo las registradas manualmente. Actualiza también el archivo SQL de importación.”
+
+SQL de importación
+“Actualiza pnk_inmobiliaria.sql con la estructura completa de tablas, propiedades base, galería principal, usuarios, propietarios, gestores y solicitudes necesarias para que el proyecto pueda importarse en otro equipo o servidor AWS.”
+
+README del proyecto
+“Crea un README.md que explique el proyecto PNK Inmobiliaria, objetivos, módulos desarrollados, tecnologías usadas, requisitos, instalación local con WAMP/XAMPP, importación de base de datos, roles del sistema, credenciales de prueba y pasos generales de despliegue en AWS.”
+
+Autores del README
+“Agrega al README una sección de autores indicando que el desarrollo fue realizado por Maricel Videla y Valentina Ferreira para INACAP, año 2026.”
+
+Seguridad para repositorio público
+“Revisa el proyecto pensando en que el repositorio será público en GitHub. Elimina archivos que expongan claves reales, evita contraseñas hardcodeadas y deja las credenciales sensibles documentadas como configuración local o de servidor.”
+
+Despliegue en AWS EC2
+“Guía el despliegue del proyecto en una instancia EC2 de AWS con Amazon Linux. Instala Apache/httpd, PHP, MariaDB y Git; clona el repositorio en /var/www/html; configura permisos; importa la base de datos y ajusta conexion.php para el usuario de base de datos del servidor.”
+
+Reglas de seguridad AWS
+“Configura el Security Group de EC2 para permitir tráfico HTTP por el puerto 80 desde 0.0.0.0/0 y acceso SSH por el puerto 22. Verifica que httpd esté activo y escuchando en el puerto 80.”
+
+Conexión de base de datos en AWS
+“Crea un usuario de base de datos para la aplicación en MariaDB, otorga permisos sobre pnk_inmobiliaria y actualiza conexion.php para usar ese usuario en lugar de root.”
+
+Usuario administrador en AWS
+“Crea o actualiza un usuario administrador en la tabla usuarios usando password_hash para generar la contraseña con bcrypt. Verifica que tenga rol administrador y estado activo para poder iniciar sesión en el panel admin.”
+
+Pruebas finales en AWS
+“Realiza pruebas finales del despliegue: carga de página principal, login administrador, panel admin, listado de propiedades, registro de propietario, aprobación, login propietario, solicitud de visita, panel gestor y actualización de estados.”
+
+Respaldos con Git
+“Guía los comandos Git para guardar cambios locales, revisar estado, agregar archivos, crear commits descriptivos y subir a GitHub con git push origin main. Verifica que el árbol de trabajo quede limpio.”
